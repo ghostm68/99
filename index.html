@@ -65,10 +65,13 @@
   <head>
     <meta charset="UTF-8" />
   
-    <title>INKREALM SUNDAY TIMES</title>
+    <title>INKREALM  TIMES</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" />
 		<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,700;1,400;1,700&amp;family=Quicksand:wght@700&amp;display=swap" rel="stylesheet" />
-		<link href="styles.css" rel="stylesheet" 
+		<link href="styles.css" rel="stylesheet" />
+	  	<link rel="stylesheet" href="https://use.typekit.net/zhq0vyf.css">
+	<link rel="stylesheet" type="text/css" href="css/base.css" />
+	  
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
@@ -76,6 +79,12 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="css/styles.css" />
+	  <script>
+	document.documentElement.className = "js";
+	var supportsCssVars = function() { var e, t = document.createElement("style"); return t.innerHTML = "root: { --tmp-var: bold; }", document.head.appendChild(t), e = !!(window.CSS && window.CSS.supports && window.CSS.supports("font-weight", "var(--tmp-var)")), t.parentNode.removeChild(t), e };
+	supportsCssVars() || alert("Please view this demo in a modern browser that supports CSS Variables.");
+	</script>
+	<!--script src="//tympanus.net/codrops/adpacks/analytics.js"></script-->
   </head>
 
   <body>
@@ -179,53 +188,37 @@
             </svg>
             <i class="far fa-comment-alt">
               <span class="black">1400</span>
-            </i>
+            </i><br>
           </div> 
         </div>
-	      <style>
-		      .marquee {
-    position: relative;
-    overflow: hidden;
-    --offset: 20vw;
-    --move-initial: calc(-25% + var(--offset));
-    --move-final: calc(-50% + var(--offset));
-}
-
-.marquee__inner {
-    width: fit-content;
-    display: flex;
-    position: relative;
-    transform: translate3d(var(--move-initial), 0, 0);
-    animation: marquee 5s linear infinite;
-    animation-play-state: paused;
-}
-
-.marquee span {
-    font-size: 10vw;
-    padding: 0 2vw;
-}
-
-.marquee:hover .marquee__inner {
-    animation-play-state: running;
-}
-
-@keyframes marquee {
-    0% {
-        transform: translate3d(var(--move-initial), 0, 0);
-    }
-
-    100% {
-        transform: translate3d(var(--move-final), 0, 0);
-    }
-		      }</style>
-	<div class="marquee">
-	<div class="marquee__inner" aria-hidden="true">
-		<span>inkrealm:::</span>
+	<nav class="menu">
+			<div class="menu__item">
+				<a class="menu__item-link">yum</a>
+				<img class="menu__item-img" src="https://inkrealm.batcave.net/wp-content/uploads/2023/01/inkrealmgina20230116_112716.gif" width="188" alt="Some image"/>
+				<div class="marquee">
+					<div class="marquee__inner" aria-hidden="true">
+							<span>inkrealm:::</span>
 		<span>writer&&</span>
 		<span>musician++ </span>
 		<span>visual artist%%%</span>
-	</div>
-</div>  
+					</div>
+				</div>
+			</div>
+			<div class="menu__item">
+				<a class="menu__item-link">yum</a>
+				<img class="menu__item-img" src="https://www.inkrealm.cloud/tgitf_inkrealm1673544074509.gif" width="188" alt="Some image"/>
+				<div class="marquee">
+					<div class="marquee__inner" aria-hidden="true">
+							<span>inkrealm:::</span>
+		<span>writer&&</span>
+		<span>musician++ </span>
+		<span>visual artist%%%</span>
+					</div>
+				</div>
+			</div>     
+
+
+	 
 	      
         <div class="article-container">
           <p class="article-info">

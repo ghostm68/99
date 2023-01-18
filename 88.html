@@ -106,17 +106,127 @@
     </section>
     <div class="right">
                                     <div class="gallery">
-                                        <div class="a-move slider">
-                                            <div class="slider-wrap">
-                                                                                                    <div class="slider-item" data-dlink="https://www.hilton.com/en/hotels/orlochh-hilton-orlando/" data-d1="Hôtel" data-d2="fla">
-                                                        <img src="https://raw.githubusercontent.com/ghostm68/666/main/lux.png" alt="Image" class="a-scale">
-                                                    </div>
-                                                                                                    <div class="slider-item" data-dlink="https://www.hilton.com/en/hotels/orlochh-hilton-orlando/" data-d1="Maison" data-d2="HH">
-                                                        <img src="https://raw.githubusercontent.com/ghostm68/666/main/lux.png" alt="Image" class="a-scale">
-                                                    </div>
-                                                                                                    <div class="slider-item" data-dlink="https://www.hilton.com/en/hotels/orlochh-hilton-orlando/" data-d1="Restaurant" data-d2="fl">
-                                                        <img src="https://raw.githubusercontent.com/ghostm68/666/main/lux.png" alt="Image" class="a-scale">
-                                                    </div>
+					    <style>
+* {box-sizing: border-box;}
+body {font-family: Verdana, sans-serif;}
+.mySlides {display: none;}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+</style>
+</head>
+<body>
+
+<h2>portraits</h2>
+<p>self:</p>
+
+<div class="slideshow-container">
+
+<div class="mySlides fade">
+  <div class="numbertext">1 / 3</div>
+  <img src="https://github.com/ghostm68/666/raw/main/tink9.gif" style="width:100%">
+  <div class="text">Caption Text</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">2 / 3</div>
+  <img src="https://raw.githubusercontent.com/ghostm68/666/main/lux.png" style="width:100%">
+  <div class="text">Caption Two</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">3 / 3</div>
+  <img src="https://www.inkrealm.cloud/Adobe_20221224_154312.jpg" style="width:100%">
+  <div class="text">Caption Three</div>
+</div>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+</div>
+
+<script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+  setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+</script>
+                                          </div> 
     <section id="about">
         <h1>ink</h1>
         <p> writer - musician - visual artist, at work on several projects... 
@@ -132,14 +242,14 @@
             <div class="d-table">
                 <div class="d-cell">
                     <div class="top-line">
-                        <a href="https://www.google.fr/maps/place/C.+Arrayanes+%26+Av+Selene,+Santo+Domingo,+Dominican+Republic/@18.4509605,-69.9411944,16z/data=!4m6!3m5!1s0x8ea562105b47bb4f:0x87abacebe0b6b664!8m2!3d18.4509605!4d-69.9411944!16s%2Fg%2F11gd_4px3g" target="_blank"><span class="text">Adresse : 10, park plaza, 10112 bv</span></a>
+                        <a href="https://www.google.fr/maps/place/C.+Arrayanes+%26+Av+Selene,+Santo+Domingo,+Dominican+Republic/@18.4509605,-69.9411944,16z/data=!4m6!3m5!1s0x8ea562105b47bb4f:0x87abacebe0b6b664!8m2!3d18.4509605!4d-69.9411944!16s%2Fg%2F11gd_4px3g" target="_blank"><span class="text">Adresse : 10, park plaza, 10112 bv</span></a><br>
                         <span class="icon-lozenge"></span>
-                        <a href="mailto:inkrealm@inkrealm.info"><span class="text">Mail :inkrealm@inkrealm.info</span></a>
+                        <a href="mailto:inkrealm@inkrealm.info"><span class="text">Mail :inkrealm@inkrealm.info</span></a><br>
                         <span class="icon-lozenge"></span>
-                        <a href="tel:16468019713"><span class="text">Tél : 1 646 801 97 13</span></a>
+                        <a href="tel:16468019713"><span class="text">Tél : 1 646 801 97 13</span></a><br>
                     </div>
                     <div class="bottom-line">
-                        <a href="https://www.authorwave.gq"><span class="text">©2023 PIERCEHICKS/SDV/INKREALM</span></a>
+                        <a href="https://www.authorwave.gq"><span class="text">©2023 PIERCEHICKS/SDV/INKREALM</span></a><br>
                   
  
                         <span class="icon-lozenge"></span>

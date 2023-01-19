@@ -20,117 +20,9 @@
  <style>
   @import url('https://fonts.googleapis.com/css?family=Poppins');
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Poppins', sans-serif;
-}
-
-section {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: #fff;
-  pointer-events:none;
-  animation:fadeout .5s linear forwards;
-  animation-delay:8.5s;
-}
-
-@keyframes fadeout {
-  0%{
-    opacity:1;
-  }
-  100% {
-    opacity:0;
-  }
-}
+  
  
-
-
-.loader {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  background: #000;
-}
-.count {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform:translate(-50%,-50%);
-  font-size: 18vw;
-  color: #fff;
-  font-weight: 800;
-  mix-blen-mode:difference;
-  width: 550px;
-  text-align: right;
-}
-
-
-
-.welcome {
-  position: absolute;
-  top:0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #000;
-}
-
-
-h2 {
-  margin: 0;
-  padding: 0;
-  font-size: 10vw;
-  }</style>
  
- <div class="welcome">
-    <h2>Wordstar Wip</h2>
-  </div>
-  <section> 
-    <div class="loader"></div> 
-    <div class="count"></div>
-  </section>
-   <script>
-    $(document).ready(function(){
-  var count=0;
-  var counter= setInterval(function() {
-    if(count<101){
-      $('.count').text(count+'%');
-      $('.loader').css('width', count+'%');
-      count++; 
-    }
-    else {
-      clearInterval(counter);
-    }
-  },80)
-  });</script>
- <div class="loader-13">
-<div class="loader13">
-<div class="loader13">
-<div class="loader13">
-<div class="loader13">
-<div class="loader13">
-<div class="loader13">
-<div class="loader13">
-<div class="loader13">
-<div class="loader13">
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
 
 <style>
 .loader-13{
@@ -157,66 +49,13 @@ to { transform: rotate(360deg) }
 <div class="d-none | js-site-loader:lightLoader">
  
 </div>
+
 <div class="site-loader__content d-none relative t-60 t-130@sm t-95@md t-ls-7 overflow-hidden | js-site-loader:completeLoader">
-<div class="site-loader__sentence overflow-hidden t-center t-left@md px-0.25 | js-site-loader:contentInner">
-We are            <div
-class="site-loader__word d-inline-block overflow-hidden overflow-visible@md | js-site-loader:wordContainer"
-data-words="graphic designers.|interior designers.|model makers.|project managers.|retail planners."
->
-<span class="d-inline-block | js-site-loader:word">writer</span>
+
 </div>
-</div>
-<div class="site-loader__wipe | js-site-loader:wipeWhite"></div>
-<div class="d-none site-loader__wipe-clou t-60 t-130@sm t-95@md t-ls-7 overflow-hidden | js-site-loader:wipeClou">
-<div class="site-loader__wipe-clou__text t-center t-left@md| js-site-loader:wipeText">inkrealm</div>
-</div>
-</div>
-<div class="site-loader__progress | js-site-loader:progress">
-<div class="ml-4">
-<div class="site-loader__progress__text | js-site-loader:loadingText">
-Loading                <sup>(<span class="js-site-loader:percent">0</span>)</sup>
-</div>
-</div>
-<div class="site-loader__bar-container mt-0.75">
-<div class="site-loader__bar | js-site-loader:bar"></div>
-<div class="site-loader__bar-bg | js-site-loader:barBg"></div>
-</div>
-</div>
-</div>
- <header fixed z-50 top left w-1/1 d-none | js-header">
+left w-1/1 d-none | js-header">
 <div class="bg-white d-flex justify-between items-center h-1/1 w-1/1 px-0.5 px-1@sm px-1.5@md">
-<div class="d-flex items-center">
- 
-<g mask="url(#header__logo__mask)">
-<path id="C" class="header__logo__item | js-header:item"
-d="M98.53,197.34h98.81V0L98.53,0C44.11,0,0,44.11,0,98.53v0.28C0,153.22,44.11,197.34,98.53,197.34z"/>
-<polygon id="L" class="header__logo__item | js-header:item"
-points="215.15,0 215.15,69.77 215.15,197.34 342.71,197.34 412.48,197.34 "/>
-<path id="O" class="header__logo__item | js-header:item" d="M573.27,98.92c0,54.36-44.07,98.42-98.42,98.42c-54.35,0-98.41-44.06-98.41-98.42 c0-54.35,44.06-98.41,98.41-98.41C529.2,0.51,573.27,44.56,573.27,98.92z"/>
-<polygon id="U" class="header__logo__item header__logo__item--last | js-header:lastItem"
-points="662.17,0 592.41,0 592.41,69.77 592.41,197.34 719.98,197.34 789.74,197.34 789.74,127.57
-789.74,0 "/>
-</g>
-</svg>
-</a>
-</div>
- <style>
-	.demo {
-		border:1px solid #4F3B3A;
-		border-collapse:separate;
-		padding:6px;
-	}
-	.demo th {
-		border:1px solid #4F3B3A;
-		padding:6px;
-		background:#FF0000;
-	}
-	.demo td {
-		border:1px solid #4F3B3A;
-		padding:6px;
-		background:#000000;
-	}
-</style>
+<div>
 
 <table class="demo">
 	<caption>Tab</caption>	<thead>	<tr>		<th>#</th>

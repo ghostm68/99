@@ -412,7 +412,22 @@ body {
   -webkit-transition:0.5s 0.4s;
   transition:0.5s 0.4s;
 }
-			    
+			    .slides .slide:nth-child(8){
+  background:url("https://www.inkrealm.cloud/inkrealmdorothytree.gif") center/cover;
+}
+.slides .slide:nth-child(8):hover{
+  -webkit-flex-grow: 5;
+  flex-grow: 5;
+  -webkit-filter:grayscale(0);
+  filter:grayscale(0);
+}
+.slides .slide:nth-child(8):hover .content{
+  opacity: 1;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+  -webkit-transition:0.5s 0.4s;
+  transition:0.5s 0.4s;
+} 		    
 .slides .slide .content{
   position: relative;
   bottom: 0;

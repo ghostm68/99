@@ -9,6 +9,8 @@
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
     </url></sitemap>
+     </sitempindex>
+      <sitemapindex>
    <sitemap>
      <url>
 <loc>https://www.wordstar.gq/88</loc>
@@ -16,4 +18,4 @@
 <changefreq>weekly</changefreq>
 <priority>0.6</priority>
   </url></sitemap>
-     </sitempindex>
+ </sitempindex>

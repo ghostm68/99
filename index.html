@@ -85,98 +85,7 @@
 	</script>
 	<!--script src="//tympanus.net/codrops/adpacks/analytics.js"></script-->
   </head>
- <style>
-			  #basix_bookmark_link{
-	color: #006699;
-	font-family: helvetica;
-	font-size: 9px;
-	font-style: italic;
-	font-weight: bold;
-	cursor: crosshair;
-	text-decoration: line-through  solid;
-}
-#basix_bookmark_link:hover{
-	color: #95c2fd;
-	text-decoration-line: underline;
-}
 
-#basix_bookmark_div {
-	position: fixed;
-	text-align:center;
-	padding:25px;
-	font-family:arial;
-	font-size:15px;
-	top: 50%;
-  	left: 50%;
-  	transform: translate(-50%, -50%);
-	border:solid #ddd 1px;
-	border-radius:6px;
-	box-shadow: #ccc 1px 2px;
-	display:none;
-	z-index: 999;
-    background-color: #fff;
-    top: 130px;
-}
-
-#basix_bookmark_div #close_link {
-	cursor:pointer;
-	text-decoration:underline;
-}
-
-#basix_bookmark_div #bookmark_title{
-	font-size:1.2rem;
-	padding:10px;
-}
-
-#basix_bookmark_div #bookmark_content{
-	margin-bottom:10px;
-}
-		  </style>
-  
-	<script src = "https://pagecdn.io/plugin/wp-official-add-to-homescreen/1.1.3/assets/addtohomescreen.min.js"></script>
-<link rel = "stylesheet" type = "text/css" href = "https://pagecdn.io/plugin/wp-official-add-to-homescreen/1.1.3/assets/addtohomescreen.css">
-<script>
-<!-- 
-		function runBookmark(bookmarkTitle, bookmarkUrl) {
-			if (bookmarkTitle == undefined || bookmarkUrl == "")
-				bookmarkTitle = document.title;
-			if (bookmarkUrl == undefined || bookmarkUrl == "")
-				bookmarkUrl = window.location.href;
-			if ('addToHomescreen' in window && addToHomescreen.isCompatible) {
-				addToHomescreen({
-					autostart: false,
-					startDelay: 0
-				}).show(true);
-			} else if (/CriOS\//.test(navigator.userAgent)) {
-				document.getElementById("bookmark_content").innerHtml = 'To add to Home Screen, launch this website in Safari, then tap the Share button and select "Add to Home Screen".';
-			} else if (window.sidebar && window.sidebar.addPanel) {
-				window.sidebar.addPanel(bookmarkTitle, bookmarkUrl, '');
-			} else if ((window.sidebar && /Firefox/i.test(navigator.userAgent) && !Object.fromEntries) || (window.opera && window.print)) {
-				$(this).attr({
-					href: bookmarkUrl,
-					title: bookmarkTitle,
-					rel: 'sidebar'
-				}).off(e);
-				return true;
-			} else if (window.external && ('AddFavorite' in window.external)) {
-				window.external.AddFavorite(bookmarkUrl, bookmarkTitle);
-			} else {
-				document.getElementById("bookmark_content").innerHTML = 'Please press ' + (/Mac/i.test(navigator.platform) ? 'Cmd' : 'Ctrl') + '+D to bookmark this page.';
-				document.getElementById("basix_bookmark_div").style.display = "block";
-			}
-	
-			return false;
-		}
-	
-		document.getElementById("close_link").addEventListener("click", function() {
-			document.getElementById("basix_bookmark_div").style.display = "none";
-		});
-	
-		document.getElementById("basix_bookmark_link").addEventListener("click", function() {
-			runBookmark("https://www.wordstar.gq", "wordstar");
-		});
-// -->
-</script>
   <body>
     <header class="header">
       <nav class="nav width-100 flex-space-btwn">
@@ -194,7 +103,7 @@
             target="_blank"
             href=" "
           >
-        <img height="60"  src="https://78.media.tumblr.com/19c2042af48bd27a073a94befc453cad/tumblr_ns9ruxy9my1styfajo7_500.gif" class="w3-circle" alt="" style="width:50%">
+        <img height="60"  src="annhardinginkrealm.gif" class="w3-circle" alt="" style="width:50%">
 		<body class="w3-container">
 </body class="w3-container">
           </a>
@@ -234,12 +143,7 @@
             <p>By <span>inky</span></p>
             <time datetime="2023">2023</time>
           </div>
-		<!-- Bookmark link courtesy of HTML Basix - www.htmlbasix.com -->
-		<a id = "basix_bookmark_link">Bookmark</a>					
-		<div id = "basix_bookmark_div">
-			<div id = "bookmark_title">Bookmark wordstar</div>				
-			<div id = "bookmark_content"></div>
-			<span id = "close_link">Close</span>
+		
 		</div>					
 <!-- End Bookmark link -->
           <div class="article-social-media">

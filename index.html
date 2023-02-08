@@ -112,6 +112,254 @@
           <button type="button" class="subscribe">scroll down</button>
           <button type="button" class="subscribe">for a holiday</button>
         </div>
+	      <style>
+		      * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100vh;
+}
+
+body {
+  background-color: #C1D0D0;
+  font-family: Roboto, Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navigation__checkbox {
+    display: none;
+}
+
+.navigation__button {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    height: 5rem;
+    width: 5rem;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 50%;
+    z-index: 300;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+@media screen  and (min-width: 768px) {
+    .navigation__button {
+        top: 4rem;
+        right: 4rem;
+        height: 7rem;
+        width: 7rem;
+    }
+}
+
+.navigation__background {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    background: #4A676A;
+    background-size: cover;
+    background-position: center;
+    z-index: 100;
+    transition: all 800ms cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+@media screen and (min-width: 768px) {
+    .navigation__background {
+        top: 4.5rem;
+        right: 4.5rem;
+        height: 6rem;
+        width: 6rem;
+    }
+}
+
+.navigation__nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    opacity: 0;
+    width: 0;
+    visibility: hidden;
+    z-index: 200;
+    transition: all 800ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.navigation__list {
+    /*@include center;*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+    list-style: none;
+}
+
+.navigation__item {
+    margin: 1rem;
+}
+
+.navigation__link:link,
+.navigation__link:visited {
+    display: inline-block;
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+    color: #f4f4f4;
+    font-size: 2.4rem;
+    text-decoration: none;
+    transition: all .2s;
+}
+
+@media(min-width: 768px) {
+    .navigation__link:link,
+    .navigation__link:visited {
+        font-size: 3.8rem;
+    }
+}
+
+.navigation__link span {
+    margin-right: 1.5rem;
+    display: inline-block;
+}
+
+.navigation__link:hover {
+    color: #C1D0D0;
+    transform: scale(1.1);
+}
+
+.navigation__checkbox:checked~.navigation__background {
+    transform: scale(80)
+}
+
+.navigation__checkbox:checked~.navigation__nav {
+    width: 100%;
+    visibility: visible;
+    opacity: 1;
+}
+
+.navigation__icon {
+
+    position: relative;
+    margin-top: 2.5rem;
+}
+
+@media screen and (min-width: 768px) {
+    .navigation__icon {
+        margin-top: 3.5rem;
+    }
+}
+
+.navigation__icon,
+.navigation__icon::before,
+.navigation__icon::after {
+    display: inline-block;
+    width: 2.2rem;
+    height: 2px;
+    background-color: #4A676A;
+}
+
+@media (min-width: 768px) {
+    .navigation__icon,
+    .navigation__icon::before,
+    .navigation__icon::after {
+        width: 3rem;
+    }
+}
+
+.navigation__icon::before,
+.navigation__icon::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    transition: all 200ms;
+}
+
+.navigation__icon::before {
+    top: -.8rem;
+}
+
+.navigation__icon::after {
+    top: .8rem;
+}
+
+.navigation__button:hover .navigation__icon::before {
+    top: -1rem;
+}
+
+.navigation__button:hover .navigation__icon::after {
+    top: 1rem;
+}
+
+.navigation__checkbox:checked+.navigation__button .navigation__icon {
+    background-color: transparent;
+}
+
+.navigation__checkbox:checked+.navigation__button .navigation__icon::before {
+    top: 0;
+    transform: rotate(135deg);
+}
+
+.navigation__checkbox:checked+.navigation__button .navigation__icon::after {
+    top: 0;
+    transform: rotate(-135deg);
+}
+
+
+
+/*-----------------------*/
+#by {
+  font-family: 'Arima Madurai', cursive;
+  color: #4A676A;
+  font-size: 10px;
+  position: absolute;
+  top: 22%;
+  right: 2.5%; 
+}
+
+/*
+light-blue: #C1D0D0;
+dark-blue: #4A676A;
+cream: #FFEAA5;
+yellow: #FFB037;
+		      */</style>
+	      <div class="navigation">
+      <input type="checkbox" class="navigation__checkbox" id="nav-toggle">
+      <label for="nav-toggle" class="navigation__button">
+        <span class="navigation__icon" aria-label="toggle navigation menu"></span>
+      </label>
+      <div class="navigation__background"></div>
+
+      <nav class="navigation__nav" role="navigation">
+        <ul class="navigation__list">
+          <li class="navigation__item">
+            <a href="#" class="navigation__link"><span>01</span>inkrealm</a>
+          </li>
+          <li class="navigation__item">
+            <a href="#" class="navigation__link"><span>02</span>other</a>
+          </li>
+          <li class="navigation__item">
+            <a href="#" class="navigation__link"><span>03</span>menu</a>
+          </li>
+          <li class="navigation__item">
+            <a href="#" class="navigation__link"><span>04</span>wip</a>
+          </li>
+          <li class="navigation__item">
+            <a href="#" class="navigation__link"><span>05</span>extra</a>
+          </li>
+    </ul>
+  </nav>
+  <span id="by">&copySthéffaneNunes</span>
+</div>
       </nav>
     </header>
     <main class="main width-100">

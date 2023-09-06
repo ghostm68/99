@@ -33,7 +33,7 @@
         
         // Make API request to Wolfram Alpha for word definition
         var apiKey = '8TQRKY-3U38HYPUQ6';
-        var apiUrl = 'https://www.wolframalpha.com/input/web-apps/words-assistant' + apiKey + '&i=' + encodeURIComponent(word);
+        var apiUrl = 'https://www.wordstar.gq/api/integrations/wolfram-alpha?appid=' + apiKey + '&i=' + encodeURIComponent(word);
         
         $.ajax({
           url: apiUrl,

@@ -45,7 +45,7 @@
     <script>
         function searchDictionary() {
             const merriamWebsterApiKey = '48bd7417-9f2a-48ca-b530-cc9670132d32';
-            const wolframAlphaApiKey = '246f87b1-c9cb-4012-b477-9c5850824e36';
+            const wolframAlphaApiKey = '8TQRKY-3U38HYPUQ6'; // Your Wolfram Alpha API key
             const word = document.getElementById('wordInput').value;
             const merriamWebsterApiUrl = `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${merriamWebsterApiKey}`;
             const wolframAlphaApiUrl = `https://api.wolframalpha.com/v2/query?input=${encodeURIComponent(word)}&format=plaintext&output=JSON&podstate=Definition:WordData__Show%20all&appid=${wolframAlphaApiKey}`;
@@ -90,6 +90,7 @@
     </script>
 </body>
 </html>
+
 
 
 

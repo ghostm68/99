@@ -48,7 +48,7 @@
             const wolframAlphaApiKey = '246f87b1-c9cb-4012-b477-9c5850824e36';
             const word = document.getElementById('wordInput').value;
             const merriamWebsterApiUrl = `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${merriamWebsterApiKey}`;
-            const wolframAlphaApiUrl = `https://api.wolframalpha.com/v2/query?input=${word}&format=plaintext&output=JSON&includepodid=Definition:WordData&appid=${wolframAlphaApiKey}`;
+            const wolframAlphaApiUrl = `https://api.wolframalpha.com/v2/query?input=${encodeURIComponent(word)}&format=plaintext&output=JSON&podstate=Definition:WordData__Show%20all&appid=${wolframAlphaApiKey}`;
 
             // Fetch word definitions from Merriam-Webster
             fetch(merriamWebsterApiUrl)
@@ -69,10 +69,17 @@
             fetch(wolframAlphaApiUrl)
                 .then(wolframResponse => wolframResponse.json())
                 .then(wolframData => {
-                    // Process and append Wolfram Alpha data to the iframe
-                    const wolframDefinition = wolframData.queryresult.pods[0].subpods[0].plaintext;
-                    const wolframAlphaFrame = document.getElementById('wolframAlphaFrame');
-                    wolframAlphaFrame.srcdoc = `<p>Wolfram Alpha: ${wolframDefinition}</p>`;
+                    // Check if Wolfram Alpha returned a valid result
+                    if (wolframData.queryresult.success === true) {
+                        // Process and append Wolfram Alpha data to the iframe
+                        const wolframDefinition = wolframData.queryresult.pods[0].subpods[0].plaintext;
+                        const wolframAlphaFrame = document.getElementById('wolframAlphaFrame');
+                        wolframAlphaFrame.srcdoc = `<p>Wolfram Alpha: ${wolframDefinition}</p>`;
+                    } else {
+                        console.error('Error fetching Wolfram Alpha data:', wolframData.queryresult.error);
+                        const wolframAlphaFrame = document.getElementById('wolframAlphaFrame');
+                        wolframAlphaFrame.srcdoc = '<p>Error fetching Wolfram Alpha data</p>';
+                    }
                 })
                 .catch(error => {
                     console.error('Error fetching Wolfram Alpha data:', error);
@@ -83,6 +90,7 @@
     </script>
 </body>
 </html>
+
 
 
 

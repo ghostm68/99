@@ -34,6 +34,95 @@
 <body>
     <div id="container">
         <h1>Custom Wolfram Alpha Dictionary App</h1>
+        <input type="text" id="wordInput" placeholder="Enter a word or query">
+        <input type="button" value="Search" onclick="searchWolframAlpha()">
+    </div>
+    <div id="result"></div>
+
+    <script>
+        // Define API keys along with app names
+        const apiKeys = {
+            'inkrealm': '8TQRKY-3U38HYPUQ6',
+            'wordstar': '8TQRKY-TUHAYKY2HW'
+        };
+
+        // Default app name
+        const defaultAppName = 'wordstar';
+
+        function searchWolframAlpha() {
+            const query = document.getElementById('wordInput').value;
+            
+            // Get the app name based on your app configuration or user selection
+            const appName = 'wordstar'; // Change this to the desired app name
+            
+            // Retrieve the API key based on the app name
+            const wolframAlphaApiKey = apiKeys[appName];
+
+            const wolframAlphaApiUrl = `https://api.wolframalpha.com/v2/query?input=${encodeURIComponent(query)}&format=plaintext&output=JSON&appid=${wolframAlphaApiKey}`;
+
+            // Make an API request to Wolfram Alpha
+            fetch(wolframAlphaApiUrl)
+                .then(wolframResponse => wolframResponse.json())
+                .then(wolframData => {
+                    // Check if Wolfram Alpha returned a valid result
+                    if (wolframData.queryresult.success === true) {
+                        // Process and display the Wolfram Alpha data on your page
+                        const wolframDefinition = wolframData.queryresult.pods[0].subpods[0].plaintext;
+                        const resultDiv = document.getElementById('result');
+                        resultDiv.innerHTML = `<p>Wolfram Alpha: ${wolframDefinition}</p>`;
+                    } else {
+                        console.error('Error fetching Wolfram Alpha data:', wolframData.queryresult.error);
+                        const resultDiv = document.getElementById('result');
+                        resultDiv.innerHTML = '<p>Error fetching Wolfram Alpha data</p>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching Wolfram Alpha data:', error);
+                    const resultDiv = document.getElementById('result');
+                    resultDiv.innerHTML = '<p>Error fetching Wolfram Alpha data</p>';
+                });
+        }
+    </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Wolfram Alpha Dictionary App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #container {
+            text-align: center;
+            margin: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            font-size: 18px;
+        }
+
+        input[type="button"] {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Custom Wolfram Alpha Dictionary App</h1>
         <input type="text" id="wordInput" placeholder="Enter a word">
         <input type="button" value="Search" onclick="searchWolframAlpha()">
     </div>

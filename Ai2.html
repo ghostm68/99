@@ -185,3 +185,56 @@
 </body>
 </html>
 
+<html lang="en">
+<head>
+</head>
+	<body>
+	<script>
+import com.wolfram.alpha.WAEngine;
+import com.wolfram.alpha.WAPlainText;
+import com.wolfram.alpha.WAQuery;
+import com.wolfram.alpha.WAQueryResult;
+
+public class Main {
+    public static void main(String[] args) {
+        String appID = "8TQRKY-3U38HYPUQ6";
+        WAEngine engine = new WAEngine();
+        engine.setAppID(appID);
+        WAQuery query = engine.createQuery();
+        
+        while (true) {
+            System.out.print("Enter the Word: ");
+            Scanner scanner = new Scanner(System.in);
+            String question = scanner.nextLine();
+            
+            query.setInput("What is the Meaning of " + question + "?");
+            try {
+                WAQueryResult queryResult = engine.performQuery(query);
+                if (queryResult.isError()) {
+                    System.out.println("Query error");
+                } else if (!queryResult.isSuccess()) {
+                    System.out.println("Query was not understood");
+                } else {
+                    for (WAPod pod : queryResult.getPods()) {
+                        if (pod.getTitle().equals("Result")) {
+                            for (WASubpod subpod : pod.getSubpods()) {
+                                for (Object element : subpod.getContents()) {
+                                    if (element instanceof WAPlainText) {
+                                        System.out.println(((WAPlainText) element).getText());
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+            System.out.println();
+        }
+    }
+}
+</script>
+</body>
+</html>

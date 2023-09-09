@@ -36,7 +36,7 @@
 </head>
 <body>
     <div id="container">
-        <h1>Dictionary App 2</h1>
+        <h1>Dictionary App</h1>
         <input type="text" id="wordInput" placeholder="Enter a word">
         <input type="button" value="Search" onclick="searchDictionary()">
     </div>
@@ -45,26 +45,40 @@
     <script>
         function searchDictionary() {
             const merriamWebsterApiKey = '48bd7417-9f2a-48ca-b530-cc9670132d32';
+            const wolframAlphaApiKey = '246f87b1-c9cb-4012-b477-9c5850824e36';
             const word = document.getElementById('wordInput').value;
             const iframe = document.getElementById('dictionaryFrame');
-            const apiUrl = `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${merriamWebsterApiKey}`;
+            const merriamWebsterApiUrl = `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${merriamWebsterApiKey}`;
+            const wolframAlphaApiUrl = `https://api.wolframalpha.com/v2/query?input=${word}&format=plaintext&output=JSON&includepodid=Definition:WordData&appid=${wolframAlphaApiKey}`;
 
-            fetch(apiUrl)
+            // Fetch word definitions from Merriam-Webster
+            fetch(merriamWebsterApiUrl)
                 .then(response => response.json())
                 .then(definitions => {
                     // Process and display the definitions in your desired format
                     const definitionText = definitions.join(', '); // Convert to a string
-                    iframe.srcdoc = `<p>${word}: ${definitionText}</p>`;
+
+                    // Fetch additional information from Wolfram Alpha
+                    fetch(wolframAlphaApiUrl)
+                        .then(wolframResponse => wolframResponse.json())
+                        .then(wolframData => {
+                            // Process and append Wolfram Alpha data to the definition
+                            const wolframDefinition = wolframData.queryresult.pods[0].subpods[0].plaintext;
+                            iframe.srcdoc = `<p>${word} Definitions: ${definitionText}</p><p>Wolfram Alpha: ${wolframDefinition}</p>`;
+                        })
+                        .catch(error => {
+                            console.error('Error fetching Wolfram Alpha data:', error);
+                            iframe.srcdoc = `<p>${word} Definitions: ${definitionText}</p><p>Error fetching Wolfram Alpha data</p>`;
+                        });
                 })
                 .catch(error => {
-                    console.error('Error fetching definition:', error);
+                    console.error('Error fetching Merriam-Webster definition:', error);
                     iframe.srcdoc = '<p>Error fetching definition</p>';
                 });
         }
     </script>
 </body>
 </html>
-
 
 <html>
 <body>
@@ -75,4 +89,6 @@
 <marquee>wordstar reference ai</marquee>	
 
 </body>
-</html>
+</html>	
+
+                            

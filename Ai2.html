@@ -1,4 +1,4 @@
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -55,7 +55,7 @@
                 .then(response => response.json())
                 .then(definitions => {
                     // Process and display the definitions in your desired format
-                    const definitionText = definitions.join(', '); // Convert to a string
+                    const definitionText = definitions.map(obj => obj.shortdef.join(', ')).join(' | '); // Extract and format definitions
                     const merriamWebsterFrame = document.getElementById('merriamWebsterFrame');
                     merriamWebsterFrame.srcdoc = `<p>${word} Definitions: ${definitionText}</p>`;
                 })
@@ -83,6 +83,7 @@
     </script>
 </body>
 </html>
+
 
 
 	<html>

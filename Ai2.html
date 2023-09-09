@@ -1,5 +1,4 @@
 	
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,14 +44,44 @@
 
     <script>
         function searchDictionary() {
-            const apiKey = '8TQRKY-3U38HYPUQ6';
+            const merriamWebsterApiKey = '48bd7417-9f2a-48ca-b530-cc9670132d32';
+            const wolframAlphaApiKey = '246f87b1-c9cb-4012-b477-9c5850824e36';
             const word = document.getElementById('wordInput').value;
             const iframe = document.getElementById('dictionaryFrame');
-            const apiUrl = `https://api.wolframalpha.com/v2/query?input=${word}&format=plaintext&output=JSON&includepodid=Definition:WordData&appid=${apiKey}`;
+            const merriamWebsterApiUrl = `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${merriamWebsterApiKey}`;
+            const wolframAlphaApiUrl = `https://api.wolframalpha.com/v2/query?input=${word}&format=plaintext&output=JSON&includepodid=Definition:WordData&appid=${wolframAlphaApiKey}`;
 
-            iframe.src = apiUrl;"https://www.wolframalpha.com/input/web-apps/words-assistant"
+            // Fetch word definitions from Merriam-Webster
+            fetch(merriamWebsterApiUrl)
+                .then(response => response.json())
+                .then(definitions => {
+                    // Process and display the definitions in your desired format
+                    const definitionText = definitions.join(', '); // Convert to a string
+
+                    // Fetch additional information from Wolfram Alpha
+                    fetch(wolframAlphaApiUrl)
+                        .then(wolframResponse => wolframResponse.json())
+                        .then(wolframData => {
+                            // Process and append Wolfram Alpha data to the definition
+                            const wolframDefinition = wolframData.queryresult.pods[0].subpods[0].plaintext;
+                            iframe.srcdoc = `<p>${word} Definitions: ${definitionText}</p><p>Wolfram Alpha: ${wolframDefinition}</p>`;
+                        })
+                        .catch(error => {
+                            console.error('Error fetching Wolfram Alpha data:', error);
+                            iframe.srcdoc = `<p>${word} Definitions: ${definitionText}</p><p>Error fetching Wolfram Alpha data</p>`;
+                        });
+                })
+                .catch(error => {
+                    console.error('Error fetching Merriam-Webster definition:', error);
+                    iframe.srcdoc = '<p>Error fetching definition</p>';
+                });
         }
     </script>
+</body>
+</html>
+
+<html>
+<body>
 	<iframe src="https://www.literallyanything.io/app/iPJyCAfPVaXnD7bXygbj" title="code word cloud" width="100%" height="600px"  modestbranding=0>
 	</iframe>
 

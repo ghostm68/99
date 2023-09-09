@@ -1,86 +1,89 @@
 	<!DOCTYPE html>
-	<html lang="en">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictionary App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
 
-	  <head>
-	    <meta charset="UTF-8">
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	    <title>Dictionary App</title>
-	    <style>
-	      body {
-	        font-family: Arial, sans-serif;
-	      }
+        #container {
+            text-align: center;
+            margin: 20px;
+        }
 
-	      #container {
-	        text-align: center;
-	        margin: 20px;
-	      }
+        iframe {
+            border: none;
+            width: 100%;
+            height: 400px;
+        }
 
-	      iframe {
-	        border: none;
-	        width: 100%;
-	        height: 400px;
-	      }
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            font-size: 18px;
+        }
 
-	      input[type="text"] {
-	        padding: 10px;
-	        width: 80%;
-	        font-size: 18px;
-	      }
+        input[type="button"] {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Dictionary App</h1>
+        <input type="text" id="wordInput" placeholder="Enter a word">
+        <input type="button" value="Search" onclick="searchDictionary()">
+    </div>
+    <iframe id="merriamWebsterFrame" src="" frameborder="0"></iframe>
+    <iframe id="wolframAlphaFrame" src="" frameborder="0"></iframe>
 
-	      input[type="button"] {
-	        padding: 10px 20px;
-	        font-size: 18px;
-	        cursor: pointer;
-	      }
-	    </style>
-	  </head>
+    <script>
+        function searchDictionary() {
+            const merriamWebsterApiKey = '48bd7417-9f2a-48ca-b530-cc9670132d32';
+            const wolframAlphaApiKey = '246f87b1-c9cb-4012-b477-9c5850824e36';
+            const word = document.getElementById('wordInput').value;
+            const merriamWebsterApiUrl = `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${merriamWebsterApiKey}`;
+            const wolframAlphaApiUrl = `https://api.wolframalpha.com/v2/query?input=${word}&format=plaintext&output=JSON&includepodid=Definition:WordData&appid=${wolframAlphaApiKey}`;
 
-	  <body>
-	    <div id="container">
-	      <h1>Dictionary App</h1>
-	      <input type="text" id="wordInput" placeholder="Enter a word">
-	      <input type="button" value="Search" onclick="searchDictionary()">
-	    </div>
-	    <iframe id="dictionaryFrame" src="" frameborder="0"></iframe>
+            // Fetch word definitions from Merriam-Webster
+            fetch(merriamWebsterApiUrl)
+                .then(response => response.json())
+                .then(definitions => {
+                    // Process and display the definitions in your desired format
+                    const definitionText = definitions.join(', '); // Convert to a string
+                    const merriamWebsterFrame = document.getElementById('merriamWebsterFrame');
+                    merriamWebsterFrame.srcdoc = `<p>${word} Definitions: ${definitionText}</p>`;
+                })
+                .catch(error => {
+                    console.error('Error fetching Merriam-Webster definition:', error);
+                    const merriamWebsterFrame = document.getElementById('merriamWebsterFrame');
+                    merriamWebsterFrame.srcdoc = '<p>Error fetching definition</p>';
+                });
 
-	    <script>
-	      function searchDictionary() {
-	        const merriamWebsterApiKey = '48bd7417-9f2a-48ca-b530-cc9670132d32';
-	        const wolframAlphaApiKey = '246f87b1-c9cb-4012-b477-9c5850824e36';
-	        const word = document.getElementById('wordInput').value;
-	        const iframe = document.getElementById('dictionaryFrame');
-	        const merriamWebsterApiUrl = `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${merriamWebsterApiKey}`;
-	        const wolframAlphaApiUrl = `https://api.wolframalpha.com/v2/query?input=${word}&format=plaintext&output=JSON&includepodid=Definition:WordData&appid=${wolframAlphaApiKey}`;
+            // Fetch additional information from Wolfram Alpha
+            fetch(wolframAlphaApiUrl)
+                .then(wolframResponse => wolframResponse.json())
+                .then(wolframData => {
+                    // Process and append Wolfram Alpha data to the iframe
+                    const wolframDefinition = wolframData.queryresult.pods[0].subpods[0].plaintext;
+                    const wolframAlphaFrame = document.getElementById('wolframAlphaFrame');
+                    wolframAlphaFrame.srcdoc = `<p>Wolfram Alpha: ${wolframDefinition}</p>`;
+                })
+                .catch(error => {
+                    console.error('Error fetching Wolfram Alpha data:', error);
+                    const wolframAlphaFrame = document.getElementById('wolframAlphaFrame');
+                    wolframAlphaFrame.srcdoc = '<p>Error fetching Wolfram Alpha data</p>';
+                });
+        }
+    </script>
+</body>
+</html>
 
-	        // Fetch word definitions from Merriam-Webster
-	        fetch(merriamWebsterApiUrl)
-	          .then(response => response.json())
-	          .then(definitions => {
-	            // Process and display the definitions in your desired format
-	            const definitionText = definitions.join(', '); // Convert to a string
-
-	            // Fetch additional information from Wolfram Alpha
-	            fetch(wolframAlphaApiUrl)
-	              .then(wolframResponse => wolframResponse.json())
-	              .then(wolframData => {
-	                // Process and append Wolfram Alpha data to the definition
-	                const wolframDefinition = wolframData.queryresult.pods[0].subpods[0].plaintext;
-	                iframe.srcdoc = `<p>${word} Definitions: ${definitionText}</p><p>Wolfram Alpha: ${wolframDefinition}</p>`;
-	              })
-	              .catch(error => {
-	                console.error('Error fetching Wolfram Alpha data:', error);
-	                iframe.srcdoc = `<p>${word} Definitions: ${definitionText}</p><p>Error fetching Wolfram Alpha data</p>`;
-	              });
-	          })
-	          .catch(error => {
-	            console.error('Error fetching Merriam-Webster definition:', error);
-	            iframe.srcdoc = '<p>Error fetching definition</p>';
-	          });
-	      }
-	    </script>
-	  </body>
-
-	</html>
 
 	<html>
 

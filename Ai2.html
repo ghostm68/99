@@ -1,4 +1,80 @@
-                    <!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wolfram Alpha App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #container {
+            text-align: center;
+            margin: 20px;
+        }
+
+        iframe {
+            border: none;
+            width: 100%;
+            height: 400px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            font-size: 18px;
+        }
+
+        input[type="button"] {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Wolfram Alpha App</h1>
+        <input type="text" id="wordInput" placeholder="Enter a word or query">
+        <input type="button" value="Search Wolfram Alpha" onclick="searchWolframAlpha()">
+    </div>
+    <iframe id="wolframAlphaFrame" src="" frameborder="0"></iframe>
+
+    <script>
+        const wolframAlphaApiKey = '8TQRKY-3U38HYPUQ6'; // Your Wolfram Alpha API key
+
+        function searchWolframAlpha() {
+            const query = document.getElementById('wordInput').value;
+            const wolframAlphaApiUrl = `https://api.wolframalpha.com/v2/query?input=${encodeURIComponent(query)}&format=plaintext&output=JSON&podstate=Definition:WordData__Show%20all&appid=${wolframAlphaApiKey}`;
+
+            // Fetch data from Wolfram Alpha
+            fetch(wolframAlphaApiUrl)
+                .then(wolframResponse => wolframResponse.json())
+                .then(wolframData => {
+                    // Check if Wolfram Alpha returned a valid result
+                    if (wolframData.queryresult.success === true) {
+                        // Process and append Wolfram Alpha data to the iframe
+                        const wolframDefinition = wolframData.queryresult.pods[0].subpods[0].plaintext;
+                        const wolframAlphaFrame = document.getElementById('wolframAlphaFrame');
+                        wolframAlphaFrame.srcdoc = `<p>Wolfram Alpha: ${wolframDefinition}</p>`;
+                    } else {
+                        console.error('Error fetching Wolfram Alpha data:', wolframData.queryresult.error);
+                        const wolframAlphaFrame = document.getElementById('wolframAlphaFrame');
+                        wolframAlphaFrame.srcdoc = '<p>Error fetching Wolfram Alpha data</p>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching Wolfram Alpha data:', error);
+                    const wolframAlphaFrame = document.getElementById('wolframAlphaFrame');
+                    wolframAlphaFrame.srcdoc = '<p>Error fetching Wolfram Alpha data</p>';
+                });
+        }
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -109,3 +185,72 @@
 	  </body>
 
 	</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thesaurus App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #container {
+            text-align: center;
+            margin: 20px;
+        }
+
+        iframe {
+            border: none;
+            width: 100%;
+            height: 400px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            font-size: 18px;
+        }
+
+        input[type="button"] {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Thesaurus App</h1>
+        <input type="text" id="wordInput" placeholder="Enter a word">
+        <input type="button" value="Search Thesaurus" onclick="searchThesaurus()">
+    </div>
+    <iframe id="thesaurusFrame" src="" frameborder="0"></iframe>
+
+    <script>
+        const merriamThesaurusApiKey = '246f87b1-c9cb-4012-b477-9c5850824e36';
+
+        function searchThesaurus() {
+            const word = document.getElementById('wordInput').value;
+            const merriamThesaurusApiUrl = `https://www.dictionaryapi.com/api/v3/references/thesaurus/json/${word}?key=${merriamThesaurusApiKey}`;
+
+            // Fetch word synonyms from Merriam-Webster Thesaurus
+            fetch(merriamThesaurusApiUrl)
+                .then(response => response.json())
+                .then(synonyms => {
+                    // Process and display the synonyms in your desired format
+                    const synonymsText = synonyms.map(obj => obj.meta.syns[0].join(', ')).join(' | '); // Extract and format synonyms
+                    const thesaurusFrame = document.getElementById('thesaurusFrame');
+                    thesaurusFrame.srcdoc = `<p>${word} Synonyms: ${synonymsText}</p>`;
+                })
+                .catch(error => {
+                    console.error('Error fetching Thesaurus data:', error);
+                    const thesaurusFrame = document.getElementById('thesaurusFrame');
+                    thesaurusFrame.srcdoc = '<p>Error fetching synonyms</p>';
+                });
+        }
+    </script>
+</body>
+</html>
+

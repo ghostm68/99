@@ -58,18 +58,7 @@
                     // Process and display the definitions in your desired format
                     const definitionText = definitions.join(', '); // Convert to a string
 
-                    // Fetch additional information from Wolfram Alpha
-                    fetch(wolframAlphaApiUrl)
-                        .then(wolframResponse => wolframResponse.json())
-                        .then(wolframData => {
-                            // Process and append Wolfram Alpha data to the definition
-                            const wolframDefinition = wolframData.queryresult.pods[0].subpods[0].plaintext;
-                            iframe.srcdoc = `<p>${word} Definitions: ${definitionText}</p><p>Wolfram Alpha: ${wolframDefinition}</p>`;
-                        })
-                        .catch(error => {
-                            console.error('Error fetching Wolfram Alpha data:', error);
-                            iframe.srcdoc = `<p>${word} Definitions: ${definitionText}</p><p>Error fetching Wolfram Alpha data</p>`;
-                        });
+                    
                 })
                 .catch(error => {
                     console.error('Error fetching Merriam-Webster definition:', error);

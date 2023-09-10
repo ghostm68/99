@@ -3,164 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marvel Series Viewer</title>
-    <style>
-        body {
-            background-image: url('https://i.pinimg.com/originals/e5/53/46/e55346d539daeda80680794de7f29a93.gif'); /* Background image URL */
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            color: white;
-            font-family: Arial, sans-serif;
-        }
-        h1 {
-            text-align: center;
-        }
-        form {
-            text-align: center;
-            margin: 20px auto;
-        }
-        #searchInput {
-            padding: 10px;
-            width: 300px;
-            border: none;
-        }
-        #searchButton {
-            padding: 10px 20px;
-            background-color: #e62429; /* Marvel red */
-            border: none;
-            color: white;
-            cursor: pointer;
-        }
-        #seriesContainer {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        iframe {
-            border: none;
-            margin: 10px;
-        }
-    </style>
+    <title>Marvel Comic Cover Viewer</title>
 </head>
 <body>
-    <h1>Marvel Series Viewer</h1>
-    <form id="searchForm">
-        <input type="text" id="searchInput" placeholder="Enter a search query">
-        <input type="submit" id="searchButton" value="Search">
-    </form>
-    <div id="seriesContainer"></div>
+    <h1>Random Marvel Comic Cover</h1>
+    <img id="comicCover" src="" alt="Marvel Comic Cover">
+    <button id="getRandomCover">Get Random Cover</button>
 
     <script>
-        // Marvel API keys
-        const publicKey = 'eb535b51abdc399392bb68f63840e122';
-        const privateKey = '7c466dfe68151a2bd36f9a52f855aba9f7be24af';
+        var PRIV_KEY = "7c466dfe68151a2bd36f9a52f855aba9f7be24af";
+        var API_KEY = "eb535b51abdc399392bb68f63840e122";
 
-        // Function to generate the required hash
-        function generateHash(timestamp) {
-            const hashString = timestamp + privateKey + publicKey;
-            return md5(hashString);
-        }
+        var IMAGE_NOT_AVAIL = "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available";
 
-        // Function to fetch and display Marvel series
-        function displayMarvelSeries(query = '') {
-            // Generate a timestamp
-            const timestamp = new Date().getTime();
+        document.getElementById("getRandomCover").addEventListener("click", function() {
+            getCover();
+        });
 
-            // Generate the hash
-            const hash = generateHash(timestamp);
+        function getCover() {
+            var year = getRandomInt(1960, 2013);
+            var month = getRandomInt(1, 12);
 
-            // Construct the full API URL with the search query if provided
-            const apiUrl = query ? `https://gateway.marvel.com:443/v1/public/series?contains=comic%2Cmagazine%2Ctrade%20paperback%2Chardcover%2Cdigest%2Cgraphic%20novel%2Cdigital%20comic%2Cinfinite%20comic&orderBy=title&apikey=${publicKey}&ts=${timestamp}&hash=${hash}&titleStartsWith=${encodeURIComponent(query)}` : `https://gateway.marvel.com:443/v1/public/series?contains=comic%2Cmagazine%2Ctrade%20paperback%2Chardcover%2Cdigest%2Cgraphic%20novel%2Cdigital%20comic%2Cinfinite%20comic&orderBy=title&apikey=${publicKey}&ts=${timestamp}&hash=${hash}`;
+            var monthStr = month < 10 ? "0" + month : month;
+            var eom = month == 2 ? 28 : 30;
+            var beginDateStr = year + "-" + monthStr + "-01";
+            var endDateStr = year + "-" + monthStr + "-" + eom;
+            var url = "http://gateway.marvel.com/v1/public/comics?limit=100&format=comic&formatType=comic&dateRange=" + beginDateStr + "%2C" + endDateStr + "&apikey=" + API_KEY;
 
-            fetch(apiUrl)
+            console.log(new Date() + ' ' + url);
+
+            fetch(url)
                 .then(response => response.json())
                 .then(data => {
-                    // Check if data was retrieved successfully
-                    if (data && data.data && data.data.results) {
-                        // Clear previous results
-                        const seriesContainer = document.getElementById('seriesContainer');
-                        seriesContainer.innerHTML = '';
+                    if (data.code === 200) {
+                        var comics = data.data.results;
+                        var validComics = comics.filter(comic => {
+                            return comic.thumbnail && comic.thumbnail.path !== IMAGE_NOT_AVAIL;
+                        });
 
-                        // Loop through the series data
-                        for (const series of data.data.results) {
-                            // Create an iframe for each series and set the src to the series URL
-                            const iframeHtml = `<iframe src="${series.resourceURI}" width="400" height="600"></iframe>`;
-                            seriesContainer.innerHTML += iframeHtml;
+                        if (validComics.length > 0) {
+                            var randomComic = validComics[Math.floor(Math.random() * validComics.length)];
+                            var imageUrl = randomComic.thumbnail.path + "." + randomComic.thumbnail.extension;
+                            document.getElementById("comicCover").src = imageUrl;
+                        } else {
+                            console.log("No valid comics found for this month.");
                         }
+                    } else if (data.code === "RequestThrottled") {
+                        console.log("RequestThrottled Error");
+                        console.log("Consider implementing throttling logic.");
                     } else {
-                        console.error('Error fetching Marvel series data');
+                        console.log(new Date() + ' Error: ' + JSON.stringify(data));
                     }
                 })
                 .catch(error => {
-                    console.error('Error fetching Marvel series data:', error);
+                    console.error('Error fetching Marvel comic data:', error);
                 });
         }
 
-        // Handle form submission
-        document.getElementById('searchForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const searchQuery = document.getElementById('searchInput').value;
-            displayMarvelSeries(searchQuery);
-        });
-
-        // Initial display of Marvel series (you can remove this if not needed)
-        displayMarvelSeries();
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
     </script>
-    <!-- ... Rest of the HTML and CSS ... -->
-<!-- ... Rest of the HTML and CSS ... -->
-
-<div id="errorContainer"></div> <!-- Add a container for displaying errors -->
-
-<script>
-    // ...
-
-    // Function to handle errors and display error messages
-    function handleApiError(error) {
-        const errorContainer = document.getElementById('errorContainer');
-        errorContainer.innerHTML = `<p>Error: ${error.message}</p>`;
-    }
-
-    // Function to fetch and display Marvel series
-    function displayMarvelSeries(query = '') {
-        // ...
-
-        fetch(apiUrl)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Network response was not ok (Status: ${response.status})`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                // Check if data was retrieved successfully
-                if (data && data.data && data.data.results) {
-                    // Clear previous results and errors
-                    const seriesContainer = document.getElementById('seriesContainer');
-                    const errorContainer = document.getElementById('errorContainer');
-                    seriesContainer.innerHTML = '';
-                    errorContainer.innerHTML = '';
-
-                    // Loop through the series data
-                    for (const series of data.data.results) {
-                        // Create an iframe for each series and set the src to the series URL
-                        const iframeHtml = `<iframe src="${series.resourceURI}" width="400" height="600"></iframe>`;
-                        seriesContainer.innerHTML += iframeHtml;
-                    }
-                } else {
-                    // Display an error message if no results were found
-                    handleApiError(new Error('No results found.'));
-                }
-            })
-            .catch(error => {
-                // Handle and display any errors that occur during the fetch
-                handleApiError(error);
-            });
-    }
-
-    // ...
-</script>
-
-
 </body>
 </html>

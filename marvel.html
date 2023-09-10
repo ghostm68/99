@@ -4,12 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marvel Series Viewer</title>
+    <style>
+        body {
+            background-image: url('https://i.pinimg.com/originals/e5/53/46/e55346d539daeda80680794de7f29a93.gif'); /* Replace with your background image URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            text-align: center;
+            margin: 20px auto;
+        }
+        #searchInput {
+            padding: 10px;
+            width: 300px;
+            border: none;
+        }
+        #searchButton {
+            padding: 10px 20px;
+            background-color: #e62429; /* Marvel red */
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        #seriesContainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        iframe {
+            border: none;
+            margin: 10px;
+        }
+    </style>
 </head>
 <body>
     <h1>Marvel Series Viewer</h1>
     <form id="searchForm">
         <input type="text" id="searchInput" placeholder="Enter a search query">
-        <input type="submit" value="Search">
+        <input type="submit" id="searchButton" value="Search">
     </form>
     <div id="seriesContainer"></div>
 
@@ -34,7 +72,7 @@
                         // Loop through the series data
                         for (const series of data.data.results) {
                             // Create an iframe for each series and set the src to the series URL
-                            const iframeHtml = `<iframe src="${series.resourceURI}" width="800" height="600"></iframe>`;
+                            const iframeHtml = `<iframe src="${series.resourceURI}" width="400" height="600"></iframe>`;
                             seriesContainer.innerHTML += iframeHtml;
                         }
                     } else {
@@ -58,4 +96,3 @@
     </script>
 </body>
 </html>
-

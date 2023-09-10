@@ -107,5 +107,58 @@
         // Initial display of Marvel series (you can remove this if not needed)
         displayMarvelSeries();
     </script>
+    <!-- ... Rest of the HTML and CSS ... -->
+
+<div id="errorContainer"></div> <!-- Add a container for displaying errors -->
+
+<script>
+    // ...
+
+    // Function to handle errors and display error messages
+    function handleApiError(error) {
+        const errorContainer = document.getElementById('errorContainer');
+        errorContainer.innerHTML = `<p>Error: ${error.message}</p>`;
+    }
+
+    // Function to fetch and display Marvel series
+    function displayMarvelSeries(query = '') {
+        // ...
+
+        fetch(apiUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Check if data was retrieved successfully
+                if (data && data.data && data.data.results) {
+                    // Clear previous results and errors
+                    const seriesContainer = document.getElementById('seriesContainer');
+                    const errorContainer = document.getElementById('errorContainer');
+                    seriesContainer.innerHTML = '';
+                    errorContainer.innerHTML = '';
+
+                    // Loop through the series data
+                    for (const series of data.data.results) {
+                        // Create an iframe for each series and set the src to the series URL
+                        const iframeHtml = `<iframe src="${series.resourceURI}" width="400" height="600"></iframe>`;
+                        seriesContainer.innerHTML += iframeHtml;
+                    }
+                } else {
+                    // Display an error message if no results were found
+                    handleApiError(new Error('No results found.'));
+                }
+            })
+            .catch(error => {
+                // Handle and display any errors that occur during the fetch
+                handleApiError(error);
+            });
+    }
+
+    // ...
+</script>
+
 </body>
 </html>

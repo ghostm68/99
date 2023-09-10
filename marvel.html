@@ -108,6 +108,7 @@
         displayMarvelSeries();
     </script>
     <!-- ... Rest of the HTML and CSS ... -->
+<!-- ... Rest of the HTML and CSS ... -->
 
 <div id="errorContainer"></div> <!-- Add a container for displaying errors -->
 
@@ -127,7 +128,7 @@
         fetch(apiUrl)
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    throw new Error(`Network response was not ok (Status: ${response.status})`);
                 }
                 return response.json();
             })
@@ -159,6 +160,7 @@
 
     // ...
 </script>
+
 
 </body>
 </html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marvel Series Viewer</title>
+</head>
+<body>
+    <h1>Marvel Series Viewer</h1>
+    <form id="searchForm">
+        <input type="text" id="searchInput" placeholder="Enter a search query">
+        <input type="submit" value="Search">
+    </form>
+    <div id="seriesContainer"></div>
+
+    <script>
+        // Marvel API endpoint with your private key
+        const marvelApiUrl = 'https://gateway.marvel.com:443/v1/public/series?apikey=eb535b51abdc399392bb68f63840e122';
+
+        // Function to fetch and display Marvel series
+        function displayMarvelSeries(query = '') {
+            // Construct the full API URL with the search query if provided
+            const apiUrl = query ? `${marvelApiUrl}&titleStartsWith=${encodeURIComponent(query)}` : marvelApiUrl;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    // Check if data was retrieved successfully
+                    if (data && data.data && data.data.results) {
+                        // Clear previous results
+                        const seriesContainer = document.getElementById('seriesContainer');
+                        seriesContainer.innerHTML = '';
+
+                        // Loop through the series data
+                        for (const series of data.data.results) {
+                            // Create an iframe for each series and set the src to the series URL
+                            const iframeHtml = `<iframe src="${series.resourceURI}" width="800" height="600"></iframe>`;
+                            seriesContainer.innerHTML += iframeHtml;
+                        }
+                    } else {
+                        console.error('Error fetching Marvel series data');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching Marvel series data:', error);
+                });
+        }
+
+        // Handle form submission
+        document.getElementById('searchForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const searchQuery = document.getElementById('searchInput').value;
+            displayMarvelSeries(searchQuery);
+        });
+
+        // Initial display of Marvel series (you can remove this if not needed)
+        displayMarvelSeries();
+    </script>
+</body>
+</html>

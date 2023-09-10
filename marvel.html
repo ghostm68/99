@@ -53,7 +53,7 @@
 
     <script>
         // Marvel API endpoint with your private key
-        const marvelApiUrl = 'https://gateway.marvel.com:443/v1/public/series?apikey=eb535b51abdc399392bb68f63840e122';
+        const marvelApiUrl = 'https://gateway.marvel.com:443/v1/public/series?contains=comic%2Cmagazine%2Ctrade%20paperback%2Chardcover%2Cdigest%2Cgraphic%20novel%2Cdigital%20comic%2Cinfinite%20comic&orderBy=title&apikey=eb535b51abdc399392bb68f63840e122';
 
         // Function to fetch and display Marvel series
         function displayMarvelSeries(query = '') {

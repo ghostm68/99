@@ -608,9 +608,10 @@ form.addEventListener('submit', handleSubmit);
 	width="850"
 	height="450"
 ></iframe>
-
+<br>
 <iframe src="http://api.mediastack.com/v1/news?access_key=693597af22e2806c85243863ff309950&categories=business,sports&countries=us,au&languages=en,-de&offset=0&limit=100" width="100%" height="500" frameborder="0" scrolling="auto" style="background-color: #333;"></iframe>
-<script>const settings = {
+<script>
+	const settings = {
 	async: true,
 	crossDomain: true,
 	url: 'https://wordsapiv1.p.rapidapi.com/words/hatchback/typeOf',
@@ -623,4 +624,23 @@ form.addEventListener('submit', handleSubmit);
 
 $.ajax(settings).done(function (response) {
 	console.log(response);
-});</script>
+});
+</script>
+<br>
+<script>
+const settings = {
+	async: true,
+	crossDomain: true,
+	url: 'https://tiktok-video-no-watermark2.p.rapidapi.com/?url=https%3A%2F%2Fwww.tiktok.com%2F%40tiktok%2Fvideo%2F7231338487075638570&hd=1',
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'fab34f4c89msh1e74696eb520e5dp124310jsn0f52d769fe30',
+		'X-RapidAPI-Host': 'tiktok-video-no-watermark2.p.rapidapi.com'
+	}
+};
+
+$.ajax(settings).done(function (response) {
+	console.log(response);
+});
+
+</script>

@@ -209,6 +209,22 @@ frameborder="0">
                 });
         }
     </script>
+	<script>
+	const settings = {
+	async: true,
+	crossDomain: true,
+	url: 'https://imdb8.p.rapidapi.com/auto-complete?q=game%20of%20thr',
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'fab34f4c89msh1e74696eb520e5dp124310jsn0f52d769fe30',
+		'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
+	}
+};
+
+$.ajax(settings).done(function (response) {
+	console.log(response);
+});
+	</script>	
 </body>
 </html>
 <!DOCTYPE html>

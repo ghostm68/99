@@ -660,32 +660,10 @@ form.addEventListener('submit', handleSubmit);
 <iframe src="https://www.lazaruscorporation.co.uk/cutup/text-mixing-desk" width="100%" height="500" frameborder="0" scrolling="auto" style="background-color: #333;"></iframe>
 <br>
 <img width="666" height="288" src="https://github.com/ghostm68/pantheon/raw/main/6afcd3282e66cfa4ac9ce2e7fd8e53da-800.jpg">
-<script>
-const apiUrl = 'https://api.waifu.im/search';  // Replace with the actual API endpoint URL
-const params = {
-  included_tags: 'maid',
-  height: '>=2000'
-};
+<html>
 
-const queryParams = new URLSearchParams(params);
-const requestUrl = `${apiUrl}?${queryParams}`;
+	  <body>
 
-fetch(requestUrl)
-  .then(response => {
-    if (response.ok) {
-      return response.json();
-    } else {
-      throw new Error('Request failed with status code: ' + response.status);
-    }
-  })
-  .then(data => {
-    // Process the response data as needed
-    console.log(data);
-  })
-  .catch(error => {
-    console.error('An error occurred:', error.message);
-  });
-</script>
 <script>
 	const mql = require('@microlink/mql')
 
@@ -696,5 +674,6 @@ const { status, data } = await mql(
 
 mql.render(data)
 </script>
-<img 
-  src="https://api.microlink.io/?url="https://inkrealm.info/1991=false&screenshot=&embed=screenshot.url" alt="literary cinema">
+
+</body>
+	</html>

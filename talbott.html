@@ -661,3 +661,15 @@ form.addEventListener('submit', handleSubmit);
 <br>
 <img width="666" height="288" src="https://github.com/ghostm68/pantheon/raw/main/6afcd3282e66cfa4ac9ce2e7fd8e53da-800.jpg">
 
+<script>
+	const mql = require('@microlink/mql')
+
+const { status, data } = await mql(
+  'https://news.inkrealm.info/1991',
+  { screenshot: true, embed: 'screenshot.url' }
+)
+
+mql.render(data)
+</script>
+<img 
+  src="https://api.microlink.io/?url=https%3A%2F%2Finkrealm.info/1991%2Fitem%3Fid%3D13713480&meta=false&screenshot=&embed=screenshot.url" alt="literary cinema">

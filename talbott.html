@@ -745,31 +745,36 @@ mql.render(data)
 
 </body>
 	</html>
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Webpage</title>
+</head>
+<body>
 
-$curl = curl_init();
+<!-- Your HTML content here -->
 
-curl_setopt_array($curl, [
-	CURLOPT_URL => "https://hyperspice-isporn-v1.p.rapidapi.com/?img=https%3A%2F%2Fwww.google.com%2Fimages%2Fbranding%2Fgooglelogo%2F2x%2Fgooglelogo_color_272x92dp.png",
-	CURLOPT_RETURNTRANSFER => true,
-	CURLOPT_ENCODING => "",
-	CURLOPT_MAXREDIRS => 10,
-	CURLOPT_TIMEOUT => 30,
-	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-	CURLOPT_CUSTOMREQUEST => "GET",
-	CURLOPT_HTTPHEADER => [
-		"X-RapidAPI-Host: hyperspice-isporn-v1.p.rapidapi.com",
-		"X-RapidAPI-Key: fab34f4c89msh1e74696eb520e5dp124310jsn0f52d769fe30"
-	],
-]);
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        const settings = {
+            async: true,
+            crossDomain: true,
+            url: 'https://imdb-com.p.rapidapi.com/auto-complete?q=game',
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': 'fab34f4c89msh1e74696eb520e5dp124310jsn0f52d769fe30',
+                'X-RapidAPI-Host': 'imdb-com.p.rapidapi.com'
+            }
+        };
 
-$response = curl_exec($curl);
-$err = curl_error($curl);
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
+    });
+</script>
 
-curl_close($curl);
-
-if ($err) {
-	echo "cURL Error #:" . $err;
-} else {
-	echo $response;
-}
+</body>
+</html>

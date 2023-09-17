@@ -751,12 +751,16 @@ mql.render(data)
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Webpage</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
 <!-- Your HTML content here -->
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<div id="response-container">
+    <!-- The API response will be displayed here -->
+</div>
+
 <script>
     $(document).ready(function () {
         const settings = {
@@ -771,7 +775,8 @@ mql.render(data)
         };
 
         $.ajax(settings).done(function (response) {
-            console.log(response);
+            // Display the response on the webpage inside the container
+            $('#response-container').html(JSON.stringify(response, null, 2));
         });
     });
 </script>

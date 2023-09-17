@@ -704,7 +704,7 @@ $(document).ready(function() {
         var letters = $('#letters').val();
         
         $.ajax({
-            url: 'http://www.anagramica.com/all/' + letters,
+            url: 'http://www.anagramica.com/all/:letters,
             method: 'GET',
             success: function(response) {
                 displayResult(response);

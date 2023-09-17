@@ -657,54 +657,66 @@ form.addEventListener('submit', handleSubmit);
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Anagramica API Example</title>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <style>
-    #response {
-      border: 1px solid black;
-      padding: 10px;
-      margin-top: 10px;
-    }
-  </style>
+    <title>Anagramikkka</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-
 <body>
-  <h1>Anagramica API Example</h1>
 
-  <form id="anagramForm">
-    Enter letters:
-    <input type="text" id="lettersInput" required />
-    <button type="submit">Submit</button>
-  </form>
+    <h1>Anagramikka</h1>
 
-  <div id="response"></div>
+    <form id="anagramForm">
+        <label for="letters">Enter letters:</label><br/>
+        <input type="text" id="letters" name="letters"><br/><br/>
+        <input type="submit" value="Submit">
+    </form>
 
-<script>  
+    <div id="result"></div>
+
+<script>
 $(document).ready(function() {
-   $('#anagramForm').submit(function(event) {
-     event.preventDefault();
-     
-     var letters = $('#lettersInput').val();
-     
-     $.ajax({
-       url: 'http://www.anagramica.com/best/' + letters,
-       method: 'GET',
-       success: function(response) {
-         var words = response.best;
+    
+    $('#anagramForm').submit(function(event) {
+        event.preventDefault();
 
-         var resultHtml = '<p>Best Anagrams:</p>';
-         for (var i = 0; i < words.length; i++) {
-           resultHtml += '<p>' + words[i] + '</p>';
-         }
+        var letters = $('#letters').val();
+        
+        $.ajax({
+            url: 'http://www.anagramica.com/all/' + letters,
+            method: 'GET',
+            success: function(response) {
+                displayResult(response);
+            },
+            error: function(error) {
+                console.log(error);
+                displayError('An error occurred while fetching data.');
+            }
+        });
+        
+    });
 
-         $('#response').html(resultHtml);
-       },
-       error: function(error) {
-         console.log(error);
-       }
-     });
-   });
 });
+
+function displayResult(result) {
+  var output = '';
+  
+  if (result && result.all && result.all.length > 0) {
+      output += '<ul>';
+      
+      result.all.forEach(function(word){
+          output += '<li>' + word + '</li>';
+      });
+      
+      output += '</ul>';
+  } else {
+      output = 'No anagrams found.';
+  }
+  
+  $('#result').html(output);
+}
+
+function displayError(message) {
+   $('#result').html('<p style="color:red;">' + message + '</p>');
+}
 </script>
 
 </body>

@@ -677,3 +677,71 @@ mql.render(data)
 
 </body>
 	</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Anagramikkka</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <h1>Anagramikka</h1>
+
+    <form id="anagramForm">
+        <label for="letters">Enter letters:</label><br/>
+        <input type="text" id="letters" name="letters"><br/><br/>
+        <input type="submit" value="Submit">
+    </form>
+
+    <div id="result"></div>
+
+<script>
+$(document).ready(function() {
+    
+    $('#anagramForm').submit(function(event) {
+        event.preventDefault();
+
+        var letters = $('#letters').val();
+        
+        $.ajax({
+            url: 'http://www.anagramica.com/all/' + letters,
+            method: 'GET',
+            success: function(response) {
+                displayResult(response);
+            },
+            error: function(error) {
+                console.log(error);
+                displayError('An error occurred while fetching data.');
+            }
+        });
+        
+    });
+
+});
+
+function displayResult(result) {
+  var output = '';
+  
+  if (result && result.all && result.all.length > 0) {
+      output += '<ul>';
+      
+      result.all.forEach(function(word){
+          output += '<li>' + word + '</li>';
+      });
+      
+      output += '</ul>';
+  } else {
+      output = 'No anagrams found.';
+  }
+  
+  $('#result').html(output);
+}
+
+function displayError(message) {
+   $('#result').html('<p style="color:red;">' + message + '</p>');
+}
+</script>
+
+</body>
+</html>
+

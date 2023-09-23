@@ -897,76 +897,17 @@ mql.render(data)
   </script>
 </body>
 </html>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Moscow Times Magazine Search</title>
+    <title>Content Promotion via Iframe</title>
 </head>
 <body>
-    <h1>Search for Magazines or Articles</h1>
+    <h1>Promote Content</h1>
     
-    <form id="searchForm">
-        <input type="text" id="searchQuery" placeholder="Enter keywords">
-        <button type="submit">Search</button>
-    </form>
-
-    <div id="searchResults">
-        <!-- Search results will be displayed here -->
-    </div>
-
-    <div id="downloadLinks">
-        <!-- Selected download links will be displayed here -->
-    </div>
-
-    <script>
-        document.getElementById('searchForm').addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent form submission
-            
-            const searchQuery = document.getElementById('searchQuery').value;
-            
-            // Perform client-side web scraping here
-            fetch('https://www.themoscowtimes.com/search?query=' + searchQuery)
-                .then(response => response.text())
-                .then(html => {
-                    // Parse the HTML to extract relevant search results
-                    const results = parseSearchResults(html, searchQuery);
-                    
-                    // Process and display the search results
-                    displaySearchResults(results);
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-        });
-
-        function parseSearchResults(html, searchQuery) {
-            // Implement logic to parse the HTML and find relevant results based on searchQuery
-            // You may need to use regular expressions or other techniques to identify content related to the query
-            // Create an array of objects with titles and URLs
-
-            // Example:
-            const results = [
-                { title: 'Magazine 1', url: 'URL1' },
-                { title: 'Magazine 2', url: 'URL2' },
-                // Add more results here
-            ];
-
-            return results;
-        }
-
-        function displaySearchResults(results) {
-            const searchResultsDiv = document.getElementById('searchResults');
-            searchResultsDiv.innerHTML = ''; // Clear previous results
-
-            results.forEach((result) => {
-                const link = document.createElement('a');
-                link.href = result.url;
-                link.download = 'moscow_times_' + result.title + '.pdf'; // Suggest a filename
-                link.textContent = 'Download ' + result.title;
-                searchResultsDiv.appendChild(link);
-            });
-        }
-    </script>
+    <!-- Replace "URL_OF_EXTERNAL_PAGE" with the actual URL of The Moscow Times' page you want to embed -->
+    <iframe src="https://www.themoscowtimes.com/search?utm_source=internal&utm_medium=mobile320-160" width="800" height="600" frameborder="0"></iframe>
 </body>
 </html>
 

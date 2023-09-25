@@ -283,60 +283,43 @@ The  Works of William Shakespeare</h2>
 
 <section>
 
-<title>Anagramikkka</title>
+<title>Anagram Finder</title>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  
 
 <style>
-
 #anagramResult {
-   display: none; 
+   display: none;
 }
-
 </style>
 
-</head>
-
-<body>
-
-<h1>Anagramikkka</h1>
+<h1>Anagram Finder</h1>
 
 <form id="anagramForm">
-
-<label for="letters">Enter letters:</label><br/>
-
-<input type="text" id="letters" name="letters"><br/><br/> 
-
-<input type="submit" value="Submit">
-
+  <label for="letters">Enter letters:</label><br/>
+  <input type="text" id="letters" name="letters"><br/><br/>
+  <input type="submit" value="Find Anagrams">  
 </form>
-
-<iframe id="anagramResult" src="http://www.anagramica.com/all/" style="width: 100%; height: 500px;"></iframe>
-
+   
+<iframe id="anagramResult"></iframe>
 
 <script>
-
-$(document).ready(function() {
-
 $('#anagramForm').submit(function(event) {
 
-   event.preventDefault();
+  event.preventDefault();
+    
+  const letters = $('#letters').val();  
 
-   var letters = $('#letters').val();
-
-   $('#anagramResult').attr('src', 'http://www.anagramica.com/all/' + letters);
-   
-  // Show iframe and set display to block
-  $('#anagramResult').show(); 
-  $('#anagramResult').css('display', 'block');
-
-});
+  const url = `https://api.datamuse.com/words?rel_anl=${letters}`;
+  
+  $('#anagramResult').attr('src', url);
+  $('#anagramResult').show();
+  $('#anagramResult').css('display', 'block'); 
 
 });
-
 </script>
 
-</body>
+</section>
 
 
 <br>

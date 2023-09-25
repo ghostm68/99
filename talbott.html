@@ -286,41 +286,48 @@ The  Works of William Shakespeare</h2>
  
 
   <title>Anagramikkka</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <style>
-        #anagramResult {
-            display: none;
-        }
-    </style>
+    <script src<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Anagram Solver</title>
+
+  <style>
+    #anagramIframe { 
+      display: block;
+      height: 500px;
+    }
+  </style>
+
 </head>
+
 <body>
 
-    <h1>Anagramikkka</h1>
+  <h1>Anagram Solver</h1>
 
-    <form id="anagramForm">
-        <label for="letters">Enter letters:</label><br/>
-        <input type="text" id="letters" name="letters"><br/><br/>
-        <input type="submit" value="Submit">
-    </form>
-    <iframe id="anagramResult" src="http://www.anagramica.com/all/" style="width: 100%; height: 500px;"></iframe>
+  <form id="anagramForm">
+    <label for="letters">Enter letters:</label><br/>  
+    <input type="text" id="letters" name="letters"><br/><br/>
+    <input type="submit" value="Submit">
+  </form>
+  
+  <iframe id="anagramIframe" src="about:blank" frameborder="0"></iframe>
 
-<script>
-$(document).ready(function() {
-    
+  <script>
     $('#anagramForm').submit(function(event) {
-        event.preventDefault();
+      event.preventDefault();
 
-        var letters = $('#letters').val();
+      var letters = $('#letters').val();
 
-        // Update the iframe's src attribute to include the letters entered by the user.
-        $('#anagramResult').attr('src', 'http://www.anagramica.com/all/' + letters);
+      $('#anagramIframe').attr('src', 'http://anagramica.com/all/' + letters);
 
-        // Display the iframe.
-        $('#anagramResult').show();
+      console.log('Updated iframe source to:', $('#anagramIframe').attr('src')); 
     });
+  </script>
 
-});
-</script>
+</body>
+
+</html>
 <br>
 <div id="container">
         <h1>Thesaurus </h1>

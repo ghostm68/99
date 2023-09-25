@@ -320,84 +320,58 @@ $('#anagramForm').submit(function(event) {
 </script>
 
 </section>
+		  <!--dictionary lookup box by TheFreeDictionary.com-->
+<style>#dictionarybox TD, INPUT, SELECT {font-size:10pt;}</style>
+<form action="https://www.thefreedictionary.com/_/partner.aspx" method="get" target="_top" name="dictionary"
+style="display:inline;margin:0">
+<table id="dictionarybox" cellspacing="0" cellpadding="3" style="border:1px #AFAFAF solid;font-family:;width:230px;background-color:#000000;color:#FFFFFF"><tr>
+<td bgcolor="#FFFFFF" style="border-bottom:1px #AFAFAF solid"><img src="//img.tfd.com/Help.gif" width="25" height="25"/></td>
+<td bgcolor="#FFFFFF" style="border-bottom:1px #AFAFAF solid" colspan="2" nowrap="yes"><a
+style="text-decoration:none;color:#000000" href="https://www.thefreedictionary.com" rel="nofollow"><div style="font-size:12pt"><b>Online Reference</b></div>
+<div style="font-size:8pt">Dictionary, Encyclopedia &amp; more</div></a></td></tr>
+<tr><td align="center">Word:<br/>
+<img id=dictionarybox_img_toggle src="//img.tfd.com/toggle/b-up.gif" style="cursor:hand;cursor:pointer"
+onclick="var s=document.getElementById('dictionarybox_source').style;this.src='//img.tfd.com/toggle/b-'+(s.display?'up.gif':'down.gif');s.display=(s.display?'':'none')"/></td>
+<td colspan="2"><input name="Word" value="" size="26"/></td></tr>
+<tr id="dictionarybox_source"><td align=right>Look in:</td><td colspan=2 style="font-size:8pt;text-align:left" id="boxsource_td"><style>#boxsource_td A {color:#FFFFFF;text-decoration:none}</style>
+<!--[if IE]><style>#boxsource_td INPUT {height:12pt}</style><![endif]-->
+<input type="radio" name="Set" value="www" checked="yes"/>Dictionary<br/>
+<input type="radio" name="Set" value="freethesaurus"/>Thesaurus<br/>
+<input type="radio" name="Set" value="medical-dictionary"/>Medical Dictionary<br/>
+<input type="radio" name="Set" value="legal-dictionary"/>Legal Dictionary<br/>
+<input type="radio" name="Set" value="financial-dictionary"/>Financial Dictionary<br/>
+<input type="radio" name="Set" value="acronyms"/>Acronyms<br/>
+<input type="radio" name="Set" value="idioms"/>Idioms<br/>
+<input type="radio" name="Set" value="encyclopedia2"/>Encyclopedia<br/>
+<input type="radio" name="Set" value="encyclopedia"/>Wikipedia<br/>
+<input type="radio" name="Set" value="periodicals"/>Periodicals<br/>
+<input type="radio" name="Set" value="literature"/>Literature
+<div style="cursor:hand;cursor:pointer"
+onclick="var s=document.getElementById('dictionarybox_ol').style;document.getElementById('dictionarybox_ol_img').src='//img.tfd.com/toggle/b-'+(s.display?'up.gif':'down.gif');s.display=(s.display?'':'none')"><img 
+id=dictionarybox_ol_img src="//img.tfd.com/toggle/b-up.gif"/>Other languages:</div><div id="dictionarybox_ol">
+<input type="radio" name="Set" value="es"/>Spanish Dictionary<br/>
+<input type="radio" name="Set" value="de"/>German Dictionary<br/>
+<input type="radio" name="Set" value="fr"/>French Dictionary<br/>
+<input type="radio" name="Set" value="it"/>Italian Dictionary<br/>
+<input type="radio" name="Set" value="zh"/>Chinese Dictionary<br/>
+<input type="radio" name="Set" value="pt"/>Portuguese Dictionary<br/>
+<input type="radio" name="Set" value="nl"/>Dutch Dictionary<br/>
+<input type="radio" name="Set" value="no"/>Norwegian Dictionary<br/>
+<input type="radio" name="Set" value="el"/>Greek Dictionary<br/>
+<input type="radio" name="Set" value="ru"/>Russian Dictionary</div>
+</td></tr>
+<tr><td align="right">by:</td>
+<td><select name="mode"><option value="w">Word</option><option value="s">Starts with</option>
+<option value="e">Ends with</option><option value="d">Mentions</option></select></td>
+<td align=right><input type="submit" name="submit" value="Look it up"/></td></tr></table></form>
+<!--end of dictionary lookup box-->
+		  <section>
+			  <h1>promotingTHEsacbee</h1>
 <br>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thesaurus App</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        #container {
-            text-align: center;
-            margin: 20px;
-        }
-
-        iframe {
-            border: none;
-            width: 100%;
-            height: 400px;
-        }
-
-        input[type="text"] {
-            padding: 10px;
-            width: 80%;
-            font-size: 18px;
-        }
-
-        input[type="button"] {
-            padding: 10px 20px;
-            font-size: 18px;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body>
-    <div id="container">
-        <h1>Thesaurus App</h1>
-        <input type="text" id="wordInput" placeholder="Enter a word">
-        <input type="button" value="Search Thesaurus" onclick="searchThesaurus()">
-    </div>
-    <iframe id="thesaurusFrame" src="" frameborder="0"></iframe>
-
-    <script>
-        const merriamThesaurusApiKey = '246f87b1-c9cb-4012-b477-9c5850824e36';
-
-        function searchThesaurus() {
-            const word = document.getElementById('wordInput').value;
-            const merriamThesaurusApiUrl = `https://www.dictionaryapi.com/api/v3/references/thesaurus/json/${word}?key=${merriamThesaurusApiKey}`;
-
-            // Fetch word synonyms from Merriam-Webster Thesaurus
-            fetch(merriamThesaurusApiUrl)
-                .then(response => response.json())
-                .then(synonyms => {
-                    // Process and display the synonyms in your desired format
-                    const synonymsText = synonyms.map(obj => obj.meta.syns[0].join(', ')).join(' | '); // Extract and format synonyms
-                    const thesaurusFrame = document.getElementById('thesaurusFrame');
-                    thesaurusFrame.srcdoc = `<p>${word} Synonyms: ${synonymsText}</p>`;
-                })
-                .catch(error => {
-                    console.error('Error fetching Thesaurus data:', error);
-                    const thesaurusFrame = document.getElementById('thesaurusFrame');
-                    thesaurusFrame.srcdoc = '<p>Error fetching synonyms</p>';
-                });
-        }
-    </script>
-	
-</body>
-</html>
-		  
-<h1>
-        promoting the sac bee
-      </h1>
- 
       <embed width="1024" height="777" src="https://www.sacbee.com/"
           type="text/html" />
 
+		  </section>
 <br>
   <iframe id="collinsAPIFrame" width="100%" height="400"></iframe>
 

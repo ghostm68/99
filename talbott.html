@@ -289,7 +289,7 @@ The  Works of William Shakespeare</h2>
 
 <style>
 #anagramResult {
-   display: none;
+   display: list-item;
 }
 </style>
 
@@ -322,7 +322,36 @@ $('#anagramForm').submit(function(event) {
 </section>
 <br>
 <section>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+        }
 
+        #container {
+            text-align: center;
+            margin: 20px;
+        }
+
+        iframe {
+            border: none;
+            width: 100%;
+            height: 400px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            font-size: 18px;
+        }
+
+        input[type="button"] {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
 <div id="container">
         <h1>Thesaurus </h1>
         <input type="text" id="wordInput" placeholder="Enter a word">
@@ -353,7 +382,7 @@ $('#anagramForm').submit(function(event) {
                 });
         }
     </script>
-
+</body>
 </section>
 
 <!-- JavaScript -->

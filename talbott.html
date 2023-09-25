@@ -283,41 +283,15 @@ The  Works of William Shakespeare</h2>
 
 <section>
 
-<title>Anagramikka</title>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  
 
-<style>
-#anagramResult {
-   display: list-item;
-}
-</style>
+
 
 <h1>Anagramikkka</h1>
+    <iframe src="https://wordsmith.org/anagram/advanced.html" title="code word random" width="100%" height="900px" modestbranding=0>
+	    </iframe>
 
-<form id="anagramForm">
-  <label for="letters">Enter letters:</label><br/>
-  <input type="text" id="letters" name="letters"><br/><br/>
-  <input type="submit" value="Find Anagrams">  
-</form>
-   
-<iframe id="anagramResult"></iframe>
 
-<script>
-$('#anagramForm').submit(function(event) {
-
-  event.preventDefault();
-    
-  const letters = $('#letters').val();  
-
-  const url = `https://api.datamuse.com/words?rel_anl=${letters}`;
-  
-  $('#anagramResult').attr('src', url);
-  $('#anagramResult').show();
-  $('#anagramResult').css('display', 'block'); 
-
-});
-</script>
 
 </section>
 		  <!--Word of the Day by TheFreeDictionary.com-->

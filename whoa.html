@@ -86,26 +86,67 @@
 	</script>
 	<!--script src="//tympanus.net/codrops/adpacks/analytics.js"></script-->
 <script src="https://cdn.jsdelivr.net/npm/barba.js@2.10.0/dist/barba.min.js"></script>
- <!-- Initialize Barba.js and set up transitions -->
-  <script>
-    Barba.init({
-      transitions: [
-        // Define your custom transition here (e.g., fade, slide, etc.)
-        // You can explore different transitions in the Barba.js documentation.
-      ],
-    });
+ <!-- Include Barba.js and GSAP scripts -->
+<script src="https://cdn.jsdelivr.net/npm/barba.js@2.10.0/dist/barba.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.1/gsap.min.js"></script>
 
-    Barba.Pjax.start();
-  </script>
-	  <style>
-	       /* Specific styles for the screenplay section */
-        .screenplay-section {
-            background-color: #000; /* Dark background color */
-            color: white; /* White text color */
-            padding: 20px; /* Add padding for spacing */
-            text-align: left; /* Set text alignment to left (LTR) */
+<!-- Initialize Barba.js and set up transitions -->
+<script>
+  // Define your custom Barba.js transition with a name (e.g., 'fade')
+  Barba.Transitioner = Barba.BaseTransition.extend({
+    start: function () {
+      // Add your GSAP animation for the transition
+      gsap.fromTo(
+        this.oldContainer,
+        { opacity: 1 }, // Starting state
+        {
+          opacity: 0, // Ending state
+          duration: 0.5, // Animation duration
+          onComplete: this.done.bind(this), // Callback when animation is complete
+        }
+      );
+    },
+  });
+
+  // Initialize Barba.js
+  Barba.Pjax.start();
+</script>
+
+<style>
+  /* Specific styles for the screenplay section */
+  .screenplay-section {
+    background-color: #000; /* Dark background color */
+    color: white; /* White text color */
+    padding: 20px; /* Add padding for spacing */
+    text-align: left; /* Set text alignment to left (LTR) */
+}
+
+        /* Styles for the copyright section */
+        .copyright-section {
+            height: 188px;
+            width: 303px;
+            border: 1px solid #4e4e4e;
+            font: 26px Arial, Serif;
+            overflow: auto;
+            cursor: white; /* White cursor for this section */
+        }
+
+        /* Styles for the specscript section */
+        .specscript-section {
+            height: 366px;
+            width: 996px;
+            border: 1px solid #4e4e4e;
+            font: 26px Arial, Serif;
+            overflow: auto;
+            cursor: red; /* Red cursor for this section */
+        }
+
+        /* Styles for the article body */
+        .article-body {
+            /* Add any common styles for the article body here */
         }
     </style>
+
   </head>
 
   <body>
@@ -419,7 +460,8 @@ or an aristocrat. Oh, know your rights..."</h1>
 </style>
 <div class="row">
   <div class="column">
-    <img src="https://github.com/ghostm68/pantheon/raw/main/wordstar_230926_175506.gif" alt="Snow" style="width:100%">
+    <img src="https://github.com/ghostm68/pantheon/raw/main
+	    I'mwordstar_230926_175506.gif" alt="Snow" style="width:100%">
   </div>
   <div class="column">
     <img src="https://github.com/ghostm68/pantheon/raw/main/wordstar_230926_175432.gif" alt="Forest" style="width:100%">
@@ -512,29 +554,22 @@ or an aristocrat. Oh, know your rights..."</h1>
 		<br><center>
 	 
 	      
-        <div class="article-container">
-          <p class="article-info">
-          <b>  
-		 
-
-
-				  screenplay 2022<BR>
-
-<div class="screenplay-section" data-barba="container">
-        <p class="article-info">
+            <div class="article-body">
+        <p class="article-info screenplay-section">
             <b>
-                screenplay 2022<br>
-                >>>  pink draft <br>
+                Screenplay 2022<br>
+                >>> Pink Draft
             </b>
         </p>
 
-        <div style="height: 188px; width: 303px; border: 1px solid #4e4e4e; font: 26px Arial, Serif; overflow: auto;">
-            (all rights reserved, copyright 2023)
+        <div class="copyright-section">
+            (All rights reserved, copyright 2023)
         </div>
-        <br>
 
-        <div style="height: 366px; width: 996px; border: 1px solid #4e4e4e; font: 26px Arial, Serif; overflow: auto;">
-            specscript film not for series -
+        <div class="specscript-section">
+            <p>
+                Specscript film not for series -
+            </p>
             <span style="white-space: pre;">
 
 
@@ -4386,7 +4421,7 @@ inkrealm
 
 <BR>
 
-<IMG height="288" SRC="laracosima1689557188789.2skinnygirls.thanks.gif"   class="w3-circle" alt="" style="width:30%">
+<IMG height="288" SRC="https://github.com/ghostm68/pantheon/raw/main/wordstar1695791689781.gif"   class="w3-circle" alt="" style="width:88%">
 		<body class="w3-container">
 
 

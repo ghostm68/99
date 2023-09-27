@@ -85,6 +85,69 @@
 	supportsCssVars() || alert("Please view this demo in a modern browser that supports CSS Variables.");
 	</script>
 	<!--script src="//tympanus.net/codrops/adpacks/analytics.js"></script-->
+<script src="https://cdn.jsdelivr.net/npm/barba.js@2.10.0/dist/barba.min.js"></script>
+ <!-- Include Barba.js and GSAP scripts -->
+<script src="https://cdn.jsdelivr.net/npm/barba.js@2.10.0/dist/barba.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.1/gsap.min.js"></script>
+
+<!-- Initialize Barba.js and set up transitions -->
+<script>
+  // Define your custom Barba.js transition with a name (e.g., 'fade')
+  Barba.Transitioner = Barba.BaseTransition.extend({
+    start: function () {
+      // Add your GSAP animation for the transition
+      gsap.fromTo(
+        this.oldContainer,
+        { opacity: 1 }, // Starting state
+        {
+          opacity: 0, // Ending state
+          duration: 0.5, // Animation duration
+          onComplete: this.done.bind(this), // Callback when animation is complete
+        }
+      );
+    },
+  });
+
+  // Initialize Barba.js
+  Barba.Pjax.start();
+</script>
+
+<style>
+  /* Specific styles for the screenplay section */
+  .screenplay-section {
+    background-color: #000; /* Dark background color */
+    color: white; /* White text color */
+    padding: 20px; /* Add padding for spacing */
+    text-align: left; /* Set text alignment to left (LTR) */
+}
+
+        /* Styles for the copyright section */
+        .copyright-section {
+            height: 188px;
+            width: 303px;
+            border: 1px solid #4e4e4e;
+            font: 26px Arial, Serif;
+            overflow: auto;
+            cursor: white; /* White cursor for this section */
+        }
+
+        /* Styles for the specscript section */
+        .specscript-section {
+		background-color: #000; /* Dark background color */
+    color: white; /* White text color */
+            height: 366px;
+            width: 996px;
+            border: 1px solid #4e4e4e;
+            font: 26px Arial, Serif;
+            overflow: auto;
+            cursor: red; /* Red cursor for this section */
+        }
+
+        /* Styles for the article body */
+        .article-body {
+            /* Add any common styles for the article body here */
+        }
+    </style>
 
   </head>
 
@@ -484,7 +547,7 @@ or an aristocrat. Oh, know your rights..."</h1>
             <i class="far fa-comment-alt">
 		<a aria-label="" class="external-link data-event-click="{&quot;element&quot;:&quot;ExternalLink&quot;,&quot;outgoingURL&quot;:&quot;https://inkrealm.info/1991&quot;}" href="https://inkrealm.info/1991" rel="nofollow noopener" target="_blank">
             			 
-              <span class="black">1269</span></a>
+              <span class="black">1599</span></a>
             </i><br>
           </div> 
         </div>
@@ -492,46 +555,25 @@ or an aristocrat. Oh, know your rights..."</h1>
 		<br><center>
 	 
 	      
-        <div class="article-container">
-          <p class="article-info">
-          <b>  
-		 
+            <div class="article-body">
+        <p class="article-info screenplay-section">
+            <b>
+                Screenplay 2022<br>
+                >>> Pink Draft
+            </b>
+        </p>
 
+        <div class="copyright-section">
+            (All rights reserved, copyright 2023)
+		<img width="188" height="88" src="https://github.com/ghostm68/pantheon/raw/main/wordstar_230927_013636.gif"><br>
+		<marquee>latest @wordstar.gq/dreamweaver</marquee>
+        </div>
 
-				  screenplay 2022<BR>
-
-<h2><bdo dir="ltr">
-
->>>  pink draft <BR></h2></bdo>
-</h1>	  
-		 
-<div style="height:188px;width:303px;border:1px solid #4e4e4e;font:26px Arial, Serif;overflow:auto;">
-
-( all rights reserved, copyyright 2023)</div>
-<BR>
-
-<div style="height:366px;width:996px;border:1px solid #4e4e4e;font:26px Arial, Serif;overflow:auto;">
-specscript film not for series -
-<span style="white-space: pre;"> 
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <div class="specscript-section">
+            <p>
+                Specscript film not for series -
+            </p>
+            <span style="white-space: pre;">
 
 
 OCTOBER PINK DRAFT
@@ -4382,7 +4424,7 @@ inkrealm
 
 <BR>
 
-<IMG height="288" SRC="laracosima1689557188789.2skinnygirls.thanks.gif"   class="w3-circle" alt="" style="width:30%">
+<IMG height="288" SRC="https://github.com/ghostm68/pantheon/raw/main/wordstar1695791689781.gif"   class="w3-circle" alt="" style="width:88%">
 		<body class="w3-container">
 
 

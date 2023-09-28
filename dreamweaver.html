@@ -104,6 +104,28 @@
             background-size: cover;
         }
     </style>
+	     <style>
+        /* Styles for the menu and content containers go here */
+        .menu-container {
+            width: 300px; /* Adjust the width of the menu container as needed */
+            height: 100%;
+            position: fixed;
+            left: -300px; /* Hide the menu off-screen by default */
+            top: 0;
+            background-color: #ffffff; /* Background color of the menu */
+            border-radius: 10px; /* Add rounded corners to the menu */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+            transition: left 0.3s ease-in-out;
+        }
+
+        .menu-open {
+            left: 0; /* Slide the menu into view when it's open */
+        }
+
+        /* Other CSS styles for menu button, etc. */
+
+        /* Barba.js specific styles, if needed */
+    </style>
 </head>
 <body>
     <div class="menu-container">

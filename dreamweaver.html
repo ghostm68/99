@@ -273,36 +273,7 @@ a:hover div {
 </iframe>
 	     <br> 
             
-    <script src="https://cdn.jsdelivr.net/npm/barba.js@2.10.0/dist/barba.min.js"></script>
     
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-
-<script>
-  // Wait for the document to be fully loaded
-  document.addEventListener("DOMContentLoaded", function () {
-    // Select the elements you want to animate
-    const elementsToAnimate = document.querySelectorAll(
-      'a[href="https://inkrealm.cloud/"], img, a[href="https://www.tiktok.com/@royaloperahouse/video/7282763857162997025"], marquee a[href="https://deepdreamgenerator.com/u/inkrealm"]'
-    );
-
-    // Loop through each element and apply the animation
-    elementsToAnimate.forEach((element, index) => {
-      // Set the initial opacity to 0 (completely transparent)
-      gsap.set(element, { opacity: 0 });
-
-      // Create a GSAP timeline for the animation
-      const timeline = gsap.timeline();
-
-      // Add a simple fade-in animation to each element
-      timeline.to(element, {
-        opacity: 1,
-        duration: 0.5, // Animation duration in seconds
-        delay: 0.2 * index, // Delay each element based on its index
-      });
-    });
-  });
-</script>
-
 <!--HTML footer tag starts here-->
         <footer>
          

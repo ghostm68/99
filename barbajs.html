@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rounded Corner Slide Menu with Barba.js</title>
+    <style>
+        /* Styles for the menu and content containers go here */
+
+        /* Other CSS styles for menu button, etc. */
+
+        /* Barba.js specific styles, if needed */
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <div class="menu">
+            <!-- Menu content goes here -->
+            <h2>Menu</h2>
+            <ul>
+                <li><a href="/home" data-barba-namespace="home">Home</a></li>
+                <li><a href="/about" data-barba-namespace="about">About</a></li>
+                <li><a href="/services" data-barba-namespace="services">Services</a></li>
+                <li><a href="/portfolio" data-barba-namespace="portfolio">Portfolio</a></li>
+                <li><a href="/contact" data-barba-namespace="contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="menu-button" onclick="toggleMenu()"></div>
+    <div class="content">
+        <!-- Page content goes here -->
+        <h1>Page Content</h1>
+        <p>This is the main content of your page.</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/barba.js@2.10.0/dist/barba.min.js"></script>
+    <script>
+        Barba.init({
+            transitions: [
+                // Define your Barba.js transitions here
+                // Example:
+                // {
+                //     name: 'fade',
+                //     to: {
+                //         namespace: ['home']
+                //     },
+                //     beforeEnter(data) {
+                //         // Add your custom transition animations or actions before entering the page
+                //     },
+                // },
+            ],
+        });
+
+        function toggleMenu() {
+            const menuContainer = document.querySelector('.menu-container');
+            const content = document.querySelector('.content');
+
+            menuContainer.classList.toggle('menu-open');
+            content.classList.toggle('content-open');
+        }
+    </script>
+</body>
+</html>

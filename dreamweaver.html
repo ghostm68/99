@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
+	
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <!--ink city layout 010
  -Created by www.inkrealm.info 
- (based on nyt)
+ (based on barbajs)
  (inspired by desire 
  and the spirit of innovation)
     ja: "私の個人情報を販売しない(カリフォルニア州消費者プライバシー法)",
@@ -86,53 +88,162 @@
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <!-- Add a background image using CSS -->
+ 
+     
+    <title>dreamweaver</title>
     <style>
+        /* Styles for the menu and content containers go here */
+
+        /* Other CSS styles for menu button, etc. */
+
+        /* Barba.js specific styles, if needed */
+
+        /* Add a background image using CSS */
         body {
             background-image: url('https://github.com/ghostm68/pantheon/raw/main/wordstar.inkrealm_230926_194138.gif');
             background-size: cover;
         }
     </style>
-	     
- 
-
-
 </head>
 <body>
-    <div class="py-20 mb-30 max-w-3xl mx-auto">
-        <div class="flex w-full justify-center">
-            <img width="500" src=" " alt="">
+    <div class="menu-container">
+        <div class="menu">
+            <!-- Menu content goes here -->
+            <h2>Menu</h2>
+            <ul>
+                <li><a href="/home" data-barba-namespace="home">Home</a></li>
+                <li><a href="/about" data-barba-namespace="about">About</a></li>
+                <li><a href="/services" data-barba-namespace="services">Services</a></li>
+                <li><a href="/portfolio" data-barba-namespace="portfolio">Portfolio</a></li>
+                <li><a href="/contact" data-barba-namespace="contact">Contact</a></li>
+            </ul>
         </div>
-        <p class="animateHeader text-4xl font-extrabold text-center text-white">
-            *
-        </p>
-        <p class="animateHeader text-white text-opacity-50 text-center mt-5">
-           <h1>writer.musician.visual artist...</h1>
-        </p>
-        <div class="animateHeader mt-10 flex flex-wrap items-center justify-center gap-x-4">
-            <a href="https://inkrealm.wordpress.com/" class="flex items-center px-6 justify-center gap-x-2 shadow-lg shadow-amber-600/20 rounded-xl py-4 font-medium bg-gradient-to-bl from-amber-700 to-amber-500 hover:opacity-80 transition duration-200 text-white">
-                at work on several projects...
-            </a>
-            <div class="py-10"></div>
-            <a href="https://wordstar.gq/" class="px-6 justify-center gap-x-2 shadow-lg shadow-amber-600/20 rounded-xl py-4 font-medium bg-gradient-to-bl from-amber-700 to-amber-500 hover:opacity-80 transition duration-200 text-white">
- 
-
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-y-12 lg:gap-y-0 lg:gap-x-12 py-24">
-        <div class="col-span-4"> 
-            <p class="text-white text-md font-medium text-gray-500/75">visit our cloud</p>
-            <a href="https://inkrealm.cloud/" class="mt-10 flex items-center px-4 justify-center gap-x-2 shadow-lg shadow-amber-600/20 cursor-pointer rounded-xl py-4 font-medium bg-gradient-to-r from-amber-700 to-amber-500 hover:opacity-80 transition duration-200 text-white">
-                <i class="fab fa-soundcloud mr-2"></i>cloud!
-            </a>
-		<br>
-		<img width="108" src="VAPORGRAM.wordstar.dreamingmachinr1695852233274.gif">
-		<br>
-		<a href="https://www.tiktok.com/@royaloperahouse/video/7282763857162997025">fairytale</a>
-		<marquee><a href="https://deepdreamgenerator.com/u/inkrealm">deepdreamgeneration</a></marquee><a
+    </div>
+    <div class="menu-button" onclick="toggleMenu()"></div>
+    <div class="content">
+        <!-- Page content goes here -->
+        <!-- Home Page -->
+        <div data-barba-namespace="home">
+            <h1>Home Page</h1>
+            <p>This is the Home Page content.</p>
+            <img src="your-image-url.jpg" alt="Image Placeholder">
+            <a href="https://www.inkrealm.info/">domain</a><br>
         </div>
-        <!-- Add the rest of your content here -->
-			  </div>
 
-    <!-- Add the bottom section with hidden images here -->
-	    
+        <!-- About Page -->
+        <div data-barba-namespace="about">
+            <h1>About Page</h1>
+            <p>This is the About Page content.</p>
+            <img src="your-image-url.jpg" alt="Image Placeholder">
+            <a href="https://music.apple.com/us/album/bookmakers-stake-single/1636600502"><font color="brown">2$kg</font></a><br>
+            <!-- Add your links and content here -->
+        </div>
+
+        <!-- Services Page -->
+        <div data-barba-namespace="services">
+            <h1>Services Page</h1>
+            <p>This is the Services Page content.</p>
+            <a href="https://www.artbreeder.com/inkrealm"><font color="brown">تحيا قطر</font></a> <br>
+            <img src="your-image-url.jpg" alt="Image Placeholder">
+            <!-- Add your links and content here -->
+        </div>
+
+        <!-- Portfolio Page -->
+        <div data-barba-namespace="portfolio">
+            <h1>Portfolio Page</h1>
+            <p>This is the Portfolio Page content.</p>
+            <p><a href="https://ello.co/inkrealm" target="_blank" rel="noopener noreferrer"><font color="brown">ELLOco</font></a></p>
+            <img src="your-image-url.jpg" alt="Image Placeholder">
+            <!-- Add your links and content here -->
+        </div>
+
+        <!-- Contact Page -->
+        <div data-barba-namespace="contact">
+            <h1>Contact Page</h1>
+            <p>This is the Contact Page content.</p>
+            <img src="your-image-url.jpg" alt="Image Placeholder">
+            <p><a href="https://vsco.co/inkrealm/gallery" target="_blank" rel="noopener noreferrer"><font color="brown">VSCO</font></a> instead</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/barba.js@2.10.0/dist/barba.min.js"></script>
+    <script>
+        Barba.init({
+            transitions: [
+                // Define your Barba.js transitions here
+                // Example:
+                // {
+                //     name: 'fade',
+                //     to: {
+                //         namespace: ['home']
+                //     },
+                //     beforeEnter(data) {
+                //         // Add your custom transition animations or actions before entering the page
+                //     },
+                // },
+                {
+                    name: 'rotate-transition',
+                    to: {
+                        namespace: ['home', 'about', 'services', 'portfolio', 'contact']
+                    },
+                    async beforeEnter(data) {
+                        // Add your custom transition animations or actions before entering the page
+                        // For example, you can rotate the content
+                        const content = data.next.container.querySelector('.content');
+                        content.style.transform = 'rotate(360deg)';
+                        content.style.transition = 'transform 0.5s ease-in-out';
+                    },
+                    async afterEnter(data) {
+                        // Remove the rotation after the transition is complete
+                        const content = data.next.container.querySelector('.content');
+                        content.style.transform = 'none';
+                    }
+                }
+            ],
+        });
+
+        function toggleMenu() {
+            const
+function toggleMenu() {
+    const menuContainer = document.querySelector('.menu-container');
+    const content = document.querySelector('.content');
+
+    menuContainer.classList.toggle('menu-open');
+    content.classList.toggle('content-open');
+}
+</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+
+<script>
+  // Wait for the document to be fully loaded
+  document.addEventListener("DOMContentLoaded", function () {
+    // Select the elements you want to animate
+    const elementsToAnimate = document.querySelectorAll(
+      'a[href="https://inkrealm.cloud/"], img, a[href="https://www.tiktok.com/@royaloperahouse/video/7282763857162997025"], marquee a[href="https://deepdreamgenerator.com/u/inkrealm"]'
+    );
+
+    // Loop through each element and apply the animation
+    elementsToAnimate.forEach((element, index) => {
+      // Set the initial opacity to 0 (completely transparent)
+      gsap.set(element, { opacity: 0 });
+
+      // Create a GSAP timeline for the animation
+      const timeline = gsap.timeline();
+
+      // Add a simple fade-in animation to each element
+      timeline.to(element, {
+        opacity: 1,
+        duration: 0.5, // Animation duration in seconds
+        delay: 0.2 * index, // Delay each element based on its index
+      });
+    });
+  });
+</script>
+
+
 </body>
 </html>
+
+	
+	
+

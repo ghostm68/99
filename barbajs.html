@@ -1,15 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rounded Corner Slide Menu with Barba.js</title>
+    <meta name="description" content="inkrealm the official site of julio peralta-paulino, writer-musician-visual artist at work on several projects.">
+    <meta name="keywords" content="creative, writing, visual arts, download, music, poetry, film, unique, band, two skinny girls, tiktok, ello">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="author" content="Julio Peralta-Paulino">
+
+    <title>dreamweaver</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
     <style>
-        /* Styles for the menu and content containers go here */
+        /* Add a background image using CSS */
+        body {
+            background-image: url('https://github.com/ghostm68/pantheon/raw/main/wordstar.inkrealm_230926_194138.gif');
+            background-size: cover;
+        }
+
+        /* Styles for the menu and content containers */
+        .menu-container {
+            width: 300px;
+            height: 100%;
+            position: fixed;
+            left: -300px;
+            top: 0;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: left 0.3s ease-in-out;
+        }
+
+        .menu-open {
+            left: 0;
+        }
 
         /* Other CSS styles for menu button, etc. */
+        .menu-button {
+            /* Add styles for your menu button here */
+        }
 
-        /* Barba.js specific styles, if needed */
+        /* Add your custom CSS styles here */
     </style>
 </head>
 <body>
@@ -29,25 +62,69 @@
     <div class="menu-button" onclick="toggleMenu()"></div>
     <div class="content">
         <!-- Page content goes here -->
-        <h1>Page Content</h1>
-        <p>This is the main content of your page.</p>
+        <!-- Home Page -->
+        <div data-barba-namespace="home">
+            <h1>Home</h1>
+            <p>...</p>
+            <img src="https://wordstar.gq/annhardinginkrealm.gif" alt="Image Placeholder">
+            <a href="https://www.inkrealm.info/">domain</a><br>
+        </div>
+
+        <!-- About Page -->
+        <div data-barba-namespace="about">
+            <h1>About</h1>
+            <p>...</p>
+            <img src="https://inkrealm.files.wordpress.com/2014/05/tumblr_n65cp27s021qgque3o1_1280.jpg?w=1024" alt="Image Placeholder">
+            <a href="https://music.apple.com/us/album/bookmakers-stake-single/1636600502"><font color="brown">2$kg</font></a><br>
+            <!-- Add your links and content here -->
+        </div>
+
+        <!-- Services Page -->
+        <div data-barba-namespace="services">
+            <h1>Serv</h1>
+            <p>...</p>
+            <a href="https://www.artbreeder.com/inkrealm"><font color="brown">تحيا قطر</font></a> <br>
+            <img src="https://wordstar.gq/wordstarlogo1675029469141.gif" alt="Image Placeholder">
+            <!-- Add your links and content here -->
+        </div>
+
+        <!-- Portfolio Page -->
+        <div data-barba-namespace="portfolio">
+            <h1>Port</h1>
+            <p>...</p>
+            <p><a href="https://ello.co/inkrealm" target="_blank" rel="noopener noreferrer"><font color="brown">ELLOco</font></a></p>
+            <img src="https://wordstar.gq/VAPORGRAM1687290982531.gif" alt="Image Placeholder">
+            <!-- Add your links and content here -->
+        </div>
+
+        <!-- Contact Page -->
+        <div data-barba-namespace="contact">
+            <h1>Contact</h1>
+            <p>...</p>
+            <img src="https://raw.githubusercontent.com/ghostm68/pantheon/main/wordstar_230927_013636.gif" alt="Image Placeholder">
+            <p><a href="https://vsco.co/inkrealm/gallery" target="_blank" rel="noopener noreferrer"><font color="brown">VSCO</font></a> instead</p>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/barba.js@2.10.0/dist/barba.min.js"></script>
     <script>
         Barba.init({
             transitions: [
-                // Define your Barba.js transitions here
-                // Example:
-                // {
-                //     name: 'fade',
-                //     to: {
-                //         namespace: ['home']
-                //     },
-                //     beforeEnter(data) {
-                //         // Add your custom transition animations or actions before entering the page
-                //     },
-                // },
+                {
+                    name: 'rotate-transition',
+                    to: {
+                        namespace: ['home', 'about', 'services', 'portfolio', 'contact']
+                    },
+                    async beforeEnter(data) {
+                        const content = data.next.container.querySelector('.content');
+                        content.style.transform = 'rotate(360deg)';
+                        content.style.transition = 'transform 0.5s ease-in-out';
+                    },
+                    async afterEnter(data) {
+                        const content = data.next.container.querySelector('.content');
+                        content.style.transform = 'none';
+                    }
+                }
             ],
         });
 
@@ -58,6 +135,26 @@
             menuContainer.classList.toggle('menu-open');
             content.classList.toggle('content-open');
         }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const elementsToAnimate = document.querySelectorAll(
+                'a[href="https://inkrealm.cloud/"], img, a[href="https://www.tiktok.com/@royaloperahouse/video/7282763857162997025"], marquee a[href="https://deepdreamgenerator.com/u/inkrealm"]'
+            );
+
+            elementsToAnimate.forEach((element, index) => {
+                gsap.set(element, { opacity: 0 });
+
+                const timeline = gsap.timeline();
+
+                timeline.to(element, {
+                    opacity: 1,
+                    duration: 0.5,
+                    delay: 0.2 * index,
+                });
+            });
+        });
     </script>
 </body>
 </html>

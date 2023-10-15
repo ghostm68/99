@@ -440,101 +440,10 @@ provided by <a style="color:#000000" href="https://www.thefreedictionary.com/" r
 
 		  </section>
 <br>
-  <iframe id="collinsAPIFrame" width="100%" height="400"></iframe>
 
-  <script type="4bb4e5ca9fa15b39a429a1ed-text/javascript">
-    const fetchWordOfTheDay = async (dictCode, format, accessKey) => {
-      const baseUrl = "https://api.collinsdictionary.com";
-      const endpoint = `/api/v1/dictionaries/${dictCode}/wordoftheday`;
-      const url = `${baseUrl}${endpoint}?format=${format}`;
-
-      try {
-        const response = await fetch(url, {
-          headers: {
-            "Host": "api.collinsdictionary.com", // Corrected hostname for Word of the Day
-            "Accept": `application/${format}`,
-            "accessKey": accessKey // Provided API key
-          }
-        });
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        const data = await response.json(); // or response.text() for XML
-
-        return data;
-      } catch (error) {
-        console.error(error);
-        return null;
-      }
-    };
-
-    // Function to update the iframe source with the Collins Dictionary API URL for the Word of the Day
-    const updateIframeForWordOfTheDay = async () => {
-      const iframe = document.querySelector("#collinsAPIFrame");
-      const format = "json"; // or "xml"
-      const accessKey = "9PC10fw7wehjX6VrPxkBLxRn7RUYOQWwucqe7kj5SFj8sSJyrSVyfYS0AZ8TrRh3"; // Provided API key
-      const wordOfTheDay = await fetchWordOfTheDay("british", format, accessKey);
-
-      if (wordOfTheDay) {
-        iframe.src = wordOfTheDay.url;
-      } else {
-        iframe.src = "about:blank";
-      }
-    };
-
-    // Load the Word of the Day on page load
-    window.addEventListener("load", updateIframeForWordOfTheDay);
-  </script>
 	<br>
-experiments.withgoogle.com/collection/aiwriting	<script>
-import com.wolfram.alpha.WAEngine;
-import com.wolfram.alpha.WAPlainText;
-import com.wolfram.alpha.WAQuery;
-import com.wolfram.alpha.WAQueryResult;
+experiments.withgoogle.com/collection/aiwriting	
 
-public class Main {
-    public static void main(String[] args) {
-        String appID = "8TQRKY-3U38HYPUQ6";
-        WAEngine engine = new WAEngine();
-        engine.setAppID(appID);
-        WAQuery query = engine.createQuery();
-        
-        while (true) {
-            System.out.print("Enter the Word: ");
-            Scanner scanner = new Scanner(System.in);
-            String question = scanner.nextLine();
-            
-            query.setInput("What is the Meaning of " + question + "?");
-            try {
-                WAQueryResult queryResult = engine.performQuery(query);
-                if (queryResult.isError()) {
-                    System.out.println("Query error");
-                } else if (!queryResult.isSuccess()) {
-                    System.out.println("Query was not understood");
-                } else {
-                    for (WAPod pod : queryResult.getPods()) {
-                        if (pod.getTitle().equals("Result")) {
-                            for (WASubpod subpod : pod.getSubpods()) {
-                                for (Object element : subpod.getContents()) {
-                                    if (element instanceof WAPlainText) {
-                                        System.out.println(((WAPlainText) element).getText());
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            
-            System.out.println();
-        }
-    }
-}
-</script>
 <br>
     <iframe src="https://openlibrary.org/random" title="code word random" width="100%" height="900px" modestbranding=0>
 	    </iframe>
